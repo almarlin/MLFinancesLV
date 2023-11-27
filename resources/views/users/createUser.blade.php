@@ -4,6 +4,8 @@
 
 @section('content')
 
+<strong>Database Connected: </strong>
+
     <div class="container mt-5">
         <form action={{ route('user.store') }} method="POST">
             {{-- Esto es un token de seguridad de laravel --}}

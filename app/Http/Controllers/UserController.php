@@ -16,6 +16,12 @@ class UserController extends Controller
     // El objeto request almacena los datos del formulario
     public function store(Request $request)
     {
-        return $request->all();
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        $user->save();
     }
 }
