@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
+use App\Models\User;
+
 class UserController extends Controller
 {
     public function create()
@@ -16,11 +19,11 @@ class UserController extends Controller
     // El objeto request almacena los datos del formulario
     public function store(Request $request)
     {
-        $user = new User([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
+        $user = new User();
+        $user->name = $request->input('inputName');
+
+        $user->surname = $request->input('inputSurname');
+
 
         $user->save();
     }
