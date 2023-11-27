@@ -1,37 +1,31 @@
-<!doctype html>
-<html lang="en">
+{{-- Para utilizar una plantilla de layout en la vista, se utiliza @extends() --}}
+@extends('layouts.template')
 
-<head>
-    <title>ML Finances</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{-- Para establecer los elementos variables de la platilla se utiliza @section('', '') --}}
+@section('title', 'Home')
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-    </script>
+@section('content')
 
-</head>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-3">Logo
+            </div>
+            <div class="row justify-content-center align-items-center col-12 col-md-9">
+                <div class="col-12 text-center">
+                    <h1 class="fw-light p-3">Bienvenido a ML Finances</h1>
+                </div>
+                <div class="col-12">ML Finances es el <strong>servicio financiero líder</strong> en Ilerna. Lorem, ipsum dolor sit amet
+                    consectetur adipisicing elit. Suscipit minima laborum explicabo
+                    fugit vitae amet fugiat officia quis doloremque sunt! Aut distinctio reiciendis maxime, aperiam
+                    consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus necessitatibus vel
+                    consequuntur dignissimos ipsa id porro iste animi magni architecto veniam et atque eum est minus
+                    temporibus,
+                    in odit optio.
+                    molestiae incidunt sit. Sint?</div>
+            </div>
+        </div>
 
-<body>
-    <header>
-        <!-- place navbar here -->
-    </header>
-    <main>
+    </div>
 
-    </main>
-    <footer>
-        <!-- place footer here -->
-    </footer>
-
-</body>
-
-</html>
+@endsection()
