@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 // Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
 use App\Models\User;
 
@@ -17,20 +17,29 @@ class UserController extends Controller
     {
     }
 
-    public function logIn(Request $request)
+    public function logUser(Request $request)
     {
         return view('users.logInUser');
     }
 
-    public function signIn(Request $request)
+    public function login(Request $request)
     {
-        $user = new User();
-        $user = User::where('nif', $request->input('inputNif'))->first();
-        //dd($user);
-        if (password_verify($request->input('inputHash'), $user->HASH)) {
+        
+        $credentials = [
+            'NIF' => $request->input('inputNif'),
+            'HASH' => $request->input('inputHash'),
+        ];
+
+        if (Auth::attempt($credentials)) {
+            // Autenticación exitosa
             return view('index');
+        } else {
+            // Autenticación fallida
+            // Puedes manejar el error aquí, por ejemplo, redirigiendo de nuevo al formulario de inicio de sesión
+            return redirect()->back()->with('error', 'Credenciales incorrectas');
         }
     }
+    
 
 
 
@@ -65,7 +74,6 @@ class UserController extends Controller
             // dd() Sirve para mostrar datos haciendo debug
             //dd($date);
         }
-
     }
 
     public function checkAddUser(Request $request): bool

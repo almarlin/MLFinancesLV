@@ -2,15 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
-    // De momento se queda en false para evitar conflictos. Otra opcion es anyadir las columnas de timestamps a la tabla.
-    public $timestamps = false;
+    use Notifiable;
 
-    protected $table = 'USER';
-   
+    protected $primaryKey = 'ID_USER'; // Nombre de la clave primaria
+
+    protected $fillable = [
+        'NIF', 'NAME', 'SURNAME', 'AGE', 'COUNTRY','PROVINCE','CITY','PC','ADDRESS','PHONENUMBER','HASH', 'BAN', 'ADMIN', 'PROFILEPHOTO'
+    ];
+
+    protected $hidden = [
+        'HASH', 'remember_token',
+    ];
+
 }
