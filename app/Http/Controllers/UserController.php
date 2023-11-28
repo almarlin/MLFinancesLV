@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 // Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -22,24 +23,33 @@ class UserController extends Controller
         return view('users.logInUser');
     }
 
+
+
     public function login(Request $request)
     {
-        
-        $credentials = [
-            'NIF' => $request->input('inputNif'),
-            'HASH' => $request->input('inputHash'),
-        ];
+        $request->validate([
+            'inputNif' => 'required',
+            'inputHash' => 'required'
+        ]);
 
-        if (Auth::attempt($credentials)) {
+        $user = User::where('NIF', $request->input('inputNif'))->first();
+
+        if (!$user) {
+            // No se encontró el usuario con el NIF proporcionado
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+
+        if (Hash::check($request->input('inputHash'), $user->HASH)) {
             // Autenticación exitosa
-            return view('index');
+            Session::put('user_nif', $user->NIF);
+            Session::put('hash', $user->HASH);
+            return 'login exitoso';
         } else {
             // Autenticación fallida
-            // Puedes manejar el error aquí, por ejemplo, redirigiendo de nuevo al formulario de inicio de sesión
-            return redirect()->back()->with('error', 'Credenciales incorrectas');
+            return 'login fallido';
         }
     }
-    
+
 
 
 
@@ -60,10 +70,10 @@ class UserController extends Controller
             $user->city = $request->input('inputCity');
             $user->pc = $request->input('inputPC');
             $user->address = $request->input('inputAddress');
-            $user->phoneNumber = $request->input('inputphoneNumber');
+            $user->phoneNumber = $request->input('inputPhoneNumber');
 
 
-            $hashFormated = password_hash($request->input('inputHash'), PASSWORD_DEFAULT);
+            $hashFormated = Hash::make($request->input('inputHash'));
             $user->hash = $hashFormated;
 
             $user->ban = null;

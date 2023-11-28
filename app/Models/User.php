@@ -18,5 +18,8 @@ class User extends Authenticatable
     protected $hidden = [
         'HASH', 'remember_token',
     ];
-
+    public function getKeyName()
+    {
+        return 'NIF';
+    }
 }

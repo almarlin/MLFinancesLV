@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container mt-5">
-        <form action="{{route('user.signIn')}}" method="POST">
+        <form action="{{route('login')}}" method="POST">
 
             @csrf
             <div class="mb-3 row">
