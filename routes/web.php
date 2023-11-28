@@ -25,8 +25,8 @@ Route::get('/signUp',[UserController::class,'create']);
 // Para hacer referencia a la ruta se utiliza su Name
 Route::post('/signUp',[UserController::class,'store'])->name('user.store');
 
-Route::get('/logIn',[UserController::class,'signIn']);
-Route::post('/logIn',[UserController::class,'signIn'])->name('user.login');
+Route::get('/logIn',[UserController::class,'logIn']);
+Route::post('/logIn',[UserController::class,'signIn'])->name('user.signIn');
 
 
 

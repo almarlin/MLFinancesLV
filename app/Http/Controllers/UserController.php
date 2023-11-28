@@ -17,9 +17,23 @@ class UserController extends Controller
     {
     }
 
-    public function logIn(Request $request){
-
+    public function logIn(Request $request)
+    {
+        return view('users.logInUser');
     }
+
+    public function signIn(Request $request)
+    {
+        $user = new User();
+        $user = User::where('nif', $request->input('inputNif'))->first();
+        //dd($user);
+        if (password_verify($request->input('inputHash'), $user->HASH)) {
+            return view('index');
+        }
+    }
+
+
+
     // El objeto request almacena los datos del formulario
     public function store(Request $request)
     {
@@ -29,7 +43,7 @@ class UserController extends Controller
             $user->surname = $request->input('inputSurname');
 
             $date = str_replace(' ', '', $request->input('inputBirthday'));
-            
+
             $user->birthday = $date;
             $user->nif = $request->input('inputNif');
             $user->country = $request->input('inputCountry');
@@ -51,6 +65,7 @@ class UserController extends Controller
             // dd() Sirve para mostrar datos haciendo debug
             //dd($date);
         }
+
     }
 
     public function checkAddUser(Request $request): bool
@@ -60,7 +75,7 @@ class UserController extends Controller
             'inputName' => 'required',
             'inputSurname' => 'required',
             'inputBirthday' => 'required',
-            'inputNif' => ['required', ' min:8 ', 'max:8'],
+            'inputNif' => ['required', 'min:8 ', 'max:8'],
             'inputCountry' => 'required',
             'inputProvince' => 'nullable',
             'inputCity' => 'nullable',
