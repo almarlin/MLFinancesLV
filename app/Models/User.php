@@ -12,5 +12,5 @@ class User extends Model
     public $timestamps = false;
 
     protected $table = 'USER';
-    protected $fillable = ['NAME', 'SURNAME'];
+    protected $fillable = ['NAME', 'SURNAME',];
 }

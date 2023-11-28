@@ -21,7 +21,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', HomeController::class);
 
-Route::get('/signIn',[UserController::class,'create']);
-
+Route::get('/signUp',[UserController::class,'create']);
 // Para hacer referencia a la ruta se utiliza su Name
-Route::post('/sigIn',[UserController::class,'store'])->name('user.store');
+Route::post('/signUp',[UserController::class,'store'])->name('user.store');
+
+Route::get('/logIn',[UserController::class,'signIn']);
+Route::post('/logIn',[UserController::class,'signIn'])->name('user.login');
+
+
+
