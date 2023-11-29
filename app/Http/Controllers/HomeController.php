@@ -15,7 +15,14 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function register()
+    {
+        return view('users.createUser');
+    }
 
+    public function login(){
+        return view('users.loginUser');
+    }
     public function adminPanel()
     {
 

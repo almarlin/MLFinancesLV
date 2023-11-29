@@ -66,7 +66,7 @@ return [
             'table' => 'users',
             'password' => [
                 'provider' => 'users',
-                'column' => 'password',
+                'column' => 'HASH',
             ],
         ],
     ],

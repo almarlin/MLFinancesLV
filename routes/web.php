@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +19,18 @@ use App\Http\Controllers\UserController;
 // Llama al método _invoke del controlador
 // _invoke para una sola ruta. Para más rutas se utiliza varias funciones con nombres distintos. Por convención el prinicpal se llama index.
 
-Route::get('/', [HomeController::class, 'home']);
+Route::view('/', 'index');
 
-Route::get('/signUp', [UserController::class, 'create']);
+Route::view('/signUp', 'users.createUser')->name('crearCuenta');
 // Para hacer referencia a la ruta se utiliza su Name
-Route::post('/signUp', [UserController::class, 'store'])->name('user.store');
+Route::post('/signUp', [LoginController::class, 'register'])->name('user.store');
 
-Route::get('/login', [UserController::class, 'logUser']);
-Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::view('/login', 'users.loginUser')->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
 
 // Rutas que requieren verificación de credenciales
-Route::middleware(['auth'])->group(function() {
-    Route::get('/panel', [HomeController::class, 'panel']);
-    Route::get('/adminPanel', [HomeController::class, 'adminPanel']);
-});
+
+Route::get('/panel', [HomeController::class, 'panel'])->middleware('auth')->name('mipanel');
+Route::get('/adminPanel', [HomeController::class, 'adminPanel'])->middleware('auth')->name('panelAdmin');
+

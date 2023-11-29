@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\AuthenticatableTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $primaryKey = 'ID_USER'; // Nombre de la clave primaria
+
+    protected $primaryKey = 'ID_USER';
 
     protected $fillable = [
         'NIF', 'NAME', 'SURNAME', 'AGE', 'COUNTRY','PROVINCE','CITY','PC','ADDRESS','PHONENUMBER','HASH', 'BAN', 'ADMIN', 'PROFILEPHOTO'
@@ -18,8 +20,9 @@ class User extends Authenticatable
     protected $hidden = [
         'HASH', 'remember_token',
     ];
-    public function getKeyName()
+
+    public function getAuthIdentifierName()
     {
-        return 'NIF';
+        return 'NIF'; 
     }
 }
