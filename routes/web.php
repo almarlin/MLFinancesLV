@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 
@@ -19,18 +18,27 @@ use App\Http\Controllers\LoginController;
 // Llama al método _invoke del controlador
 // _invoke para una sola ruta. Para más rutas se utiliza varias funciones con nombres distintos. Por convención el prinicpal se llama index.
 
-Route::view('/', 'index');
+Route::view('/', 'index')->name('index');
 
-Route::view('/signUp', 'users.createUser')->name('crearCuenta');
+Route::view('/create', 'users.createUser')->name('crearCuenta');
 // Para hacer referencia a la ruta se utiliza su Name
 Route::post('/signUp', [LoginController::class, 'register'])->name('user.store');
 
 Route::view('/login', 'users.loginUser')->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/iniciaSesion', [LoginController::class, 'login'])->name('inicia-sesion');
 
 
-// Rutas que requieren verificación de credenciales
+// Rutas que requieren verificación de credenciales llevan el middleware 'auth'
 
-Route::get('/panel', [HomeController::class, 'panel'])->middleware('auth')->name('mipanel');
+/*
+Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth. Puntos a tener en cuenta:
+- Se verifica el acceso con Auth::attempt($credenciales). Por defecto estas credenciales son email y password. 
+    La password *NO* se pasa hasheada.
+
+- La tabla de usuarios debe llamarse users y su identificador debe ser 'id'.
+- Para evitar conflictos se regenera la sesion después de autenticar.
+*/
+
+Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
 Route::get('/adminPanel', [HomeController::class, 'adminPanel'])->middleware('auth')->name('panelAdmin');
 

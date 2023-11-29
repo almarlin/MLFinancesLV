@@ -22,6 +22,12 @@
                 <small id="helpId" class="form-text text-muted">Introduce tu apellido</small>
             </div>
             <div class="mb-3">
+                <label for="" class="form-label">Email</label>
+                <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="helpId"
+                    placeholder="">
+                <small id="helpId" class="form-text text-muted">Introduce tu apellido</small>
+            </div>
+            <div class="mb-3">
                 <label for="" class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" name="inputBirthday" id="inputBirthday" aria-describedby="helpId"
                     placeholder="">

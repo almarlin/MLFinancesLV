@@ -36,6 +36,7 @@ class LoginController extends Controller
 
         $user->birthday = $date;
         $user->nif = $request->input('inputNif');
+        $user->email = $request->input('inputEmail');
         $user->country = $request->input('inputCountry');
         $user->province = $request->input('inputProvince');
         $user->city = $request->input('inputCity');
@@ -44,16 +45,16 @@ class LoginController extends Controller
         $user->phoneNumber = $request->input('inputPhoneNumber');
 
 
-        $hashFormated = Hash::make($request->input('inputHash'));
-        $user->hash = $hashFormated;
+        $user->password = Hash::make($request->input('inputHash'));
 
         $user->ban = null;
         $user->admin = false;
         $user->profilephoto = null;
 
         $user->save();
-        $request->session()->regenerate();
+
         Auth::login($user);
+        $request->session()->regenerate();
 
         // dd() Sirve para mostrar datos haciendo debug
         //dd($date);
@@ -63,27 +64,28 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = [
-            'NIF' => $request->inputNif,
-            'HASH' => $request->inputHash
+            'email' => $request->inputNif,
+            'password' => $request->inputHash
         ];
 
-        $user = User::where('NIF', $request->inputNif)->first();
+        $remember = ($request->has('remember') ? true : false);
 
-        if (!$user) {
-            // No se encontró el usuario con el NIF proporcionado
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
-        }
-
-        if (Hash::check($request->inputHash, $user->HASH)) {
-            // Autenticación exitosa
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect(route('mipanel'));
+
+            return redirect()->intended()->route('mipanel');
         } else {
-            // Autenticación fallida
-            return 'login fallido';
+
+            return 'inicio de sesión inválido';
         }
     }
-    public function logout()
+    public function logout(Request $request)
     {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('index');
     }
 }

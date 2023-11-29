@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->integer('ID_USER', true);
-            $table->integer('NIF')->nullable();
+
+            $table->integer('id',true);
+            $table->integer('NIF');
             $table->string('NAME', 10)->nullable();
             $table->string('SURNAME', 25)->nullable();
+            $table->string('email')->nullable();
             $table->integer('AGE')->nullable();
             $table->date('BIRTHDAY')->nullable();
             $table->string('COUNTRY',60)->nullable();
@@ -24,10 +26,11 @@ return new class extends Migration
             $table->integer('PC')->nullable();
             $table->string('ADDRESS',255)->nullable();
             $table->integer('PHONENUMBER')->nullable();
-            $table->string('HASH', 120)->nullable();
+            $table->string('password');
             $table->boolean('BAN')->nullable();
             $table->boolean('ADMIN')->nullable();
             $table->string('PROFILEPHOTO', 60)->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

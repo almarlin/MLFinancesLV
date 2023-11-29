@@ -2,27 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\AuthenticatableTrait;
+use Laravel\Sanctum\HasApiTokens;
+// use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
-
-    protected $primaryKey = 'ID_USER';
+    use HasFactory,HasApiTokens,Notifiable;
 
     protected $fillable = [
-        'NIF', 'NAME', 'SURNAME', 'AGE', 'COUNTRY','PROVINCE','CITY','PC','ADDRESS','PHONENUMBER','HASH', 'BAN', 'ADMIN', 'PROFILEPHOTO'
+        'NIF',
+        'NAME',
+        'SURNAME',
+        'AGE',
+        'BIRTHDAY',
+        'COUNTRY',
+        'PROVINCE',
+        'CITY',
+        'PC',
+        'ADDRESS',
+        'PHONENUMBER',
+        'HASH',
+        'BAN',
+        'ADMIN',
+        'PROFILEPHOTO'
     ];
-
     protected $hidden = [
-        'HASH', 'remember_token',
+        'HASH',
+        'remember_token'
     ];
-
-    public function getAuthIdentifierName()
-    {
-        return 'NIF'; 
-    }
 }
