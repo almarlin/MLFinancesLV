@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 // Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -27,26 +28,15 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'inputNif' => 'required',
-            'inputHash' => 'required'
-        ]);
+        $credentials = [
+            'nif' => $request->inputNif,
+            'hash' => $request->inputhash
+        ];
 
-        $user = User::where('NIF', $request->input('inputNif'))->first();
-
-        if (!$user) {
-            // No se encontró el usuario con el NIF proporcionado
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
-        }
-
-        if (Hash::check($request->input('inputHash'), $user->HASH)) {
-            // Autenticación exitosa
-            Session::put('user_nif', $user->NIF);
-            Session::put('hash', $user->HASH);
-            return 'login exitoso';
-        } else {
-            // Autenticación fallida
-            return 'login fallido';
+        if (Auth::attempt($credentials)) {
+            return view('login');
+        }else{
+            return view('mainUser');
         }
     }
 
@@ -80,6 +70,7 @@ class UserController extends Controller
             $user->admin = false;
             $user->profilephoto = null;
 
+            Auth::login($user);
             $user->save();
             // dd() Sirve para mostrar datos haciendo debug
             //dd($date);
