@@ -23,14 +23,14 @@
 
 <body>
     <header>
-        <!-- place navbar here -->
+        @yield('navbar')
     </header>
     <main>
         @yield('content')
     </main>
-    <footer>
-        <!-- place footer here -->
-    </footer>
+
+    @extends('layouts.footer')
+
     <!-- Bootstrap JavaScript Libraries -->
 
 </body>
