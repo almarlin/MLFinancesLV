@@ -15,16 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+
 
         $adminUser = new User();
-        $adminUser->NIF=000000000;
+        $adminUser->NIF = 000000000;
         $adminUser->NAME = 'admin';
-        $adminUser->SURNAME='admin';
+        $adminUser->SURNAME = 'admin';
         $adminUser->email = 'admin@admin.com';
         $adminUser->password = Hash::make('admin');
         $adminUser->ADMIN = true;
 
         $adminUser->save();
+
+        \App\Models\User::factory(10)->create();
     }
 }
