@@ -24,7 +24,7 @@ class User extends Authenticatable
         'PC',
         'ADDRESS',
         'PHONENUMBER',
-        'HASH',
+        'passsword',
         'BAN',
         'ADMIN',
         'PROFILEPHOTO'
