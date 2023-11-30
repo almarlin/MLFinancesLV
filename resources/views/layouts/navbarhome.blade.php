@@ -16,6 +16,10 @@
                 <li class="nav-item">
                     <a class="nav-link text-light fs-6 fw-light" href="{{route('mipanel')}}">Préstamos</a>
                 </li>
+                <li class="nav-item">
+                   <a href="{{route('logout')}}"> <button class="btn btn-primary">Salir</button></a>
+                </li>
+               
                
             </ul>
         </div>

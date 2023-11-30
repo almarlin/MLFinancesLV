@@ -26,6 +26,7 @@ Route::post('/signUp', [LoginController::class, 'register'])->name('user.store')
 
 Route::view('/login', 'users.loginUser')->name('login');
 Route::post('/iniciaSesion', [LoginController::class, 'login'])->name('inicia-sesion');
+Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
 
 // Rutas que requieren verificación de credenciales llevan el middleware 'auth'
