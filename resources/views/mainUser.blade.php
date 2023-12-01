@@ -16,7 +16,7 @@
                 </p>
 
             </div>
-            <div class="col-4">fechaActual</div>
+            <div class="col-4">{{ \Carbon\Carbon::now()->format('d-m-Y') }}</div>
         </div>
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
@@ -40,7 +40,8 @@
         <div class="row justify-content-center align-items-center border border-1 m-5"></div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center">Hola @auth {{ auth()->user()->NAME }} @endauth hoy es fechaActual</p>
+                <p class="text-center fw-light fs-4">Hola <strong>@auth {{ auth()->user()->NAME }} @endauth
+                    </strong> hoy es {{ \Carbon\Carbon::now()->format('d-m-Y') }}</p>
             </div>
         </div>
 
