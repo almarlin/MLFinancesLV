@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('movements', function (Blueprint $table) {
-            $table->integer('id', true);
+            $table->integer('id',true);
             $table->string('ID_FROMACCOUNT',255)->nullable();
             $table->string('ID_TOACCOUNT',255)->nullable();
             $table->string('CONCEPT', 60)->nullable();

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('account_loan', function (Blueprint $table) {
-            $table->integer('ID_ACCOUNT')->nullable()->index('ID_ACCOUNT');
-            $table->integer('ID_LOAN')->nullable()->index('ID_LOAN');
+            $table->integer('ID_ACCOUNT')->nullable();
+            $table->integer('ID_LOAN')->nullable();
         });
     }
 

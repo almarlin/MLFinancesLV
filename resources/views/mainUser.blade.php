@@ -40,7 +40,7 @@
         <div class="row justify-content-center align-items-center border border-1 m-5"></div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center fw-light fs-4">Hola <strong>@auth {{ auth()->user()->NAME }} @endauth
+                <p class="text-center fw-light fs-4">Hola <strong>{{ auth()->user()->NAME }}
                     </strong> hoy es {{ \Carbon\Carbon::now()->format('d-m-Y') }}</p>
             </div>
         </div>
@@ -54,9 +54,12 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
-                <?php
-                echo 'movimientos';
-                ?>
+
+                <div class="container rounded border border-2 border-danger">
+
+                    {{auth()->user()->accounts->first()->movements->first()}}
+                </div>
+
                 <small><a href="#">Ver todos los movimientos</a></small>
                 <small><a href="#">Consultar mis préstamos</a></small>
 
