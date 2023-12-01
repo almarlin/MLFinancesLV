@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container mt-5">
-        <form action="{{route('inicia-sesion')}}" method="POST">
+        <form action="{{ route('inicia-sesion') }}" method="POST">
 
             @csrf
             <div class="mb-3 row">
@@ -21,18 +21,21 @@
                 </div>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="rememberCheck" name="remember">
-              <label class="form-check-label" for="rememberCheck">
-                Recordarme
-              </label>
+                <input class="form-check-input" type="checkbox" id="rememberCheck" name="remember">
+                <label class="form-check-label" for="rememberCheck">
+                    Recordarme
+                </label>
             </div>
-            
+
             <div class="mb-3 row">
                 <div class="offset-sm-4 col-sm-8">
                     <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
             </div>
         </form>
+        @if (session()->has('error'))
+            <div class="bg-danger text-light text-center p-2 rounded w-25">{{ session()->get('error') }}</div>
+        @endif
     </div>
 
 @endsection

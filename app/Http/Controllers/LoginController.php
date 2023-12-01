@@ -73,10 +73,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('mipanel');
-        } else {
-
-            return 'inicio de sesión inválido';
+            return redirect()->intended('mipanel');
+        } else{
+            return redirect()->route('login')->with(['error'=>'Usuario o contraseña incorrectos.']);
         }
     }
     public function logout(Request $request)
