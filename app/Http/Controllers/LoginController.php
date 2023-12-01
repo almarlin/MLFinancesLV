@@ -60,12 +60,7 @@ class LoginController extends Controller
 
         $account->save();
 
-        $relation=new UserAccount();
 
-        $relation->id_user=$user->id;
-        $relation->id_account=$account->id;
-
-        $relation->save();
 
         Auth::login($user);
         $request->session()->regenerate();

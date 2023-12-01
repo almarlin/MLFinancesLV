@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('movement', function (Blueprint $table) {
-            $table->integer('ID_MOVEMENT', true);
-            $table->integer('ID_FROMACCOUNT')->nullable();
-            $table->integer('ID_TOACCOUNT')->nullable();
+        Schema::create('movements', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->string('ID_FROMACCOUNT',255)->nullable();
+            $table->string('ID_TOACCOUNT',255)->nullable();
             $table->string('CONCEPT', 60)->nullable();
+            $table->integer('QUANTITY')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movement');
+        Schema::dropIfExists('movements');
     }
 };

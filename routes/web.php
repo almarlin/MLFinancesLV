@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MovementController;
+use App\Models\Movement;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +44,6 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 
 Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
 Route::view('/adminPanel', 'mainAdmin')->middleware('auth')->name('panelAdmin');
+Route::view('/ingresar','ingresar')->middleware('auth')->name('ingresar');
+Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
 
