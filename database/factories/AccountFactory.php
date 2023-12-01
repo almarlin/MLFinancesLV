@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Http\Controllers\AccountController;
 use App\Models\Account;
+use App\Models\UserAccount;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,8 +22,8 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'BALANCE'=>300
-
+            'BALANCE' => 300,
+            'IBAN' => app(AccountController::class)->generateIban($this->faker->name)
         ];
     }
 }
