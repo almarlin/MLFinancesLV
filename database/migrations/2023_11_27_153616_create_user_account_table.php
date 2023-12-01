@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_account', function (Blueprint $table) {
+        Schema::create('user_accounts', function (Blueprint $table) {
             $table->integer('ID_USER')->nullable()->index('ID_USER');
             $table->integer('ID_ACCOUNT')->nullable()->index('ID_ACCOUNT');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_account');
+        Schema::dropIfExists('user_accounts');
     }
 };

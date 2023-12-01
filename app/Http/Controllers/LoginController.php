@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\UserAccount;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -53,11 +55,23 @@ class LoginController extends Controller
 
         $user->save();
 
+        $account=new Account();
+        $account->balance=300;
+
+        $account->save();
+
+        $relation=new UserAccount();
+
+        $relation->id_user=$user->id;
+        $relation->id_account=$account->id;
+
+        $relation->save();
+
         Auth::login($user);
         $request->session()->regenerate();
 
         // dd() Sirve para mostrar datos haciendo debug
-        //dd($date);
+
         return redirect(route('mipanel'));
     }
 

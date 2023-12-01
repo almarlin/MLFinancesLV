@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('user_account', function (Blueprint $table) {
+        Schema::table('user_accounts', function (Blueprint $table) {
             $table->foreign(['ID_USER'], 'user_account_ibfk_1')->references(['id'])->on('users');
-            $table->foreign(['ID_ACCOUNT'], 'user_account_ibfk_2')->references(['ID_ACCOUNT'])->on('account');
+            $table->foreign(['ID_ACCOUNT'], 'user_account_ibfk_2')->references(['id'])->on('accounts');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('user_account', function (Blueprint $table) {
+        Schema::table('user_accounts', function (Blueprint $table) {
             $table->dropForeign('user_account_ibfk_1');
             $table->dropForeign('user_account_ibfk_2');
         });

@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class UserAccount extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'ID_ACCOUNT',
-        'BALANCE'
+        'ID_USER',
+        'ID_ACCOUNT'
     ];
-
 }
