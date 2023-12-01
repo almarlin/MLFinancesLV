@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Http\Controllers\AccountController;
 use App\Models\Account;
-use App\Models\UserAccount;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,7 +23,10 @@ class AccountFactory extends Factory
     {
         return [
             'BALANCE' => 300,
-            'IBAN' => app(AccountController::class)->generateIban($this->faker->name)
+            'IBAN' => app(AccountController::class)->generateIban($this->faker->name),
+            'user_id'=>function(){
+                return User::factory()->create()->id;
+            }
         ];
     }
 }

@@ -5,15 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class Movement extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'ID_ACCOUNT',
-        'BALANCE',
-        'IBAN',
-        'user_id'
-    ];
-
 }

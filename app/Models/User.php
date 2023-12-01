@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-// use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory,HasApiTokens,Notifiable;
+    use HasFactory, HasApiTokens, Notifiable;
 
     protected $fillable = [
         'NIF',
@@ -33,4 +33,9 @@ class User extends Authenticatable
         'HASH',
         'remember_token'
     ];
+
+    public function accounts(): HasMany
+    {
+        return $this->hasMany(Account::class);
+    }
 }

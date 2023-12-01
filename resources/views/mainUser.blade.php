@@ -10,7 +10,9 @@
     <div class="container-fluid mb-5">
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
-            <div class="col-4">Nº de cuenta</div>
+            <div class="col-4">
+                @auth  {{auth()->user()->accounts->first()->IBAN}}  @endauth
+            </div>
             <div class="col-4">fechaActual</div>
         </div>
         <div class="row justify-content-center align-items-center p-2">

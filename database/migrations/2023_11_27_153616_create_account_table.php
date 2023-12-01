@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->string('IBAN',255);
             $table->float('BALANCE', 10, 0)->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

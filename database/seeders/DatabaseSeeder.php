@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
         $adminUser->save();
 
 
-        \App\Models\UserAccount::factory(10)->create();
+        \App\Models\Account::factory(10)->create();
     }
 }

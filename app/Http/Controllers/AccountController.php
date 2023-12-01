@@ -18,9 +18,6 @@ class AccountController extends Controller
             $letter=$userName[$i];
             $position=ord(strtoupper($letter)) - ord('A') + 1;
             $binary.=$binary.decbin($position);
-            if($i==4){
-            dd($binary);
-            }
         }
 
         return $binary;
