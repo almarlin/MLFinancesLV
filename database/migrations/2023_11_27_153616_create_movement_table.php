@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->integer('id',true);
-            $table->string('ID_FROMACCOUNT',255)->nullable();
-            $table->string('ID_TOACCOUNT',255)->nullable();
+            $table->integer('fromaccount_id')->nullable();
+            $table->integer('toaccount_id')->nullable();
             $table->string('CONCEPT', 60)->nullable();
             $table->integer('QUANTITY')->nullable();
             $table->timestamps();
