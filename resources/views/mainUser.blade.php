@@ -55,10 +55,24 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
 
-                <div class="container rounded border border-2 border-danger">
+               @php $movements=auth()->user()->accounts->first()->movements @endphp
+                @foreach ( $movements as $movement)
+                    <div class="container rounded border border-2 border-danger movimiento mb-2">
+                        <p class="text-center">De
+                            {{ $movement->fromIBAN }}
+                        </p>
+                        <p class="text-center">A
+                            {{ $movement->toIBAN }}
+                        </p>
+                        <p class="text-center">Concepto
+                            {{ $movement->CONCEPT }}
+                        </p>
+                        <p class="text-center">Cantidad
+                            {{ $movement->QUANTITY }}
+                        </p>
+                    </div>
+                @endforeach
 
-                    {{auth()->user()->accounts->first()->movements->first()}}
-                </div>
 
                 <small><a href="#">Ver todos los movimientos</a></small>
                 <small><a href="#">Consultar mis préstamos</a></small>

@@ -26,7 +26,7 @@ Route::view('/create', 'users.createUser')->name('crearCuenta');
 // Para hacer referencia a la ruta se utiliza su Name
 Route::post('/signUp', [LoginController::class, 'register'])->name('user.store');
 
-Route::view('/login', 'users.loginUser')->name('login');
+Route::view('/login', 'users.logInUser')->name('login');
 Route::post('/iniciaSesion', [LoginController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
@@ -47,4 +47,5 @@ Route::view('/adminPanel', 'mainAdmin')->middleware('auth')->name('panelAdmin');
 Route::view('/ingresar','ingresar')->middleware('auth')->name('ingresar');
 Route::view('/retirar','retirar')->middleware('auth')->name('retirar');
 Route::post('/postRetirar',[MovementController::class,'substract'])->middleware('auth')->name('postRetirar');
+Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
 
