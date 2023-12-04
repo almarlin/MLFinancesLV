@@ -55,8 +55,13 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
 
-               @php $movements=auth()->user()->accounts->first()->movements @endphp
-                @foreach ( $movements as $movement)
+                @php
+                    $movements = auth()
+                        ->user()
+                        ->accounts->first()->movements;
+                    $count = 0;
+                @endphp ?> ?>
+                @foreach ($movements as $movement)
                     <div class="container rounded border border-2 border-danger movimiento mb-2">
                         <p class="text-center">De
                             {{ $movement->fromIBAN }}
@@ -71,6 +76,12 @@
                             {{ $movement->QUANTITY }}
                         </p>
                     </div>
+                    @php
+                        $count++;
+                        if ($count == 2) {
+                            break;
+                        }
+                    @endphp
                 @endforeach
 
 
