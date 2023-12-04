@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Movement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,20 +56,27 @@ class MovementController extends Controller
         $send->concept = $request->input('inputConcept');
         $send->quantity = $request->input('inputQuantity');
         $send->account_id = $request->user()->accounts->first()->id;
+        $toEmail=$request->input('inputEmail');
 
-        $toaccount_id=DB::select("SELECT id FROM accounts INNER JOIN users WHERE email=$request->input('inputEmail')");
-        $send->toaccount_id = $toaccount_id;
+        $toaccount_id = DB::select("SELECT accounts.id FROM accounts INNER JOIN users ON users.id = accounts.user_id WHERE users.email ='$toEmail';");
+
+        //De la fila 0, obtenemos el atributo id.
+        $send->toaccount_id = $toaccount_id[0]->id;
 
         $send->fromIBAN = $request->user()->accounts->first()->IBAN;
-        
-        $toIBAN=DB::select("SELECT IBAN FROM accounts WHERE id=$toaccount_id");
-        $send->toIBAN = $toIBAN;
 
+        $toIBAN = DB::select("SELECT IBAN FROM accounts WHERE id=".$toaccount_id[0]->id.";");
+        $send->toIBAN = $toIBAN[0]->IBAN;
+
+        $destinatary=Account::find($toaccount_id[0]->id);
         $request->user()->accounts->first()->BALANCE -= $request->input('inputQuantity');
+
+        $destinatary->BALANCE += $request->input('inputQuantity');
+        $destinatary->save();
 
         $request->user()->accounts->first()->save();
         $send->save();
 
-
+        return redirect(route('mipanel'));  
     }
 }

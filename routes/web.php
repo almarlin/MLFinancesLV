@@ -46,6 +46,8 @@ Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
 Route::view('/adminPanel', 'mainAdmin')->middleware('auth')->name('panelAdmin');
 Route::view('/ingresar','ingresar')->middleware('auth')->name('ingresar');
 Route::view('/retirar','retirar')->middleware('auth')->name('retirar');
+Route::view('/enviar','enviar')->middleware('auth')->name('enviar');
+Route::post('/postEnviar',[MovementController::class,'send'])->middleware('auth')->name('postEnviar');
 Route::post('/postRetirar',[MovementController::class,'substract'])->middleware('auth')->name('postRetirar');
 Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
 

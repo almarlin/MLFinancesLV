@@ -56,9 +56,14 @@
             <div class="col-12 col-md-6">
 
                 @php
-                    $movements = auth()
-                        ->user()
-                        ->accounts->first()->movements;
+                    use App\Models\Movement;
+                    // Para identificar todos los movimientos del usuario, recibidos y realizados.
+                    // Cogemos su id (desde la autenticacion) y lo buscamos en la bbdd tanto como destinatario como ejecutor.
+                    // Finalmente mostramos los movimientos de mas reciente a mas antiguo. 
+                    $idUsuario = auth()->id();
+                    $movements = Movement::where('account_id', $idUsuario)
+                        ->orWhere('toaccount_id', $idUsuario)
+                        ->get();
                     $count = 0;
                 @endphp
 
@@ -92,8 +97,8 @@
 
 
                 <a href="{{ route('ingresar') }}"><button class="btn btn-danger">Ingresar</button></a>
-                {{-- <a href="{{route('retirar')}}"><button class="btn btn-danger">Retirar</button></a>
-                <a href="{{route('enviar')}}"><button class="btn btn-danger">Enviar</button></a> --}}
+                <a href="{{ route('retirar') }}"><button class="btn btn-danger">Retirar</button></a>
+                <a href="{{ route('enviar') }}"><button class="btn btn-danger">Enviar</button></a>
 
 
             </div>
