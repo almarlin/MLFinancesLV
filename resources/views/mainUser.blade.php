@@ -60,29 +60,28 @@
                         ->user()
                         ->accounts->first()->movements;
                     $count = 0;
-                @endphp ?> ?>
-                @foreach ($movements as $movement)
+                @endphp
+
+                @for ($i = count($movements) - 1; $i >= 0; $i--)
+                    @php
+                        $movement = $movements[$i];
+                    @endphp
+
                     <div class="container rounded border border-2 border-danger movimiento mb-2">
-                        <p class="text-center">De
-                            {{ $movement->fromIBAN }}
-                        </p>
-                        <p class="text-center">A
-                            {{ $movement->toIBAN }}
-                        </p>
-                        <p class="text-center">Concepto
-                            {{ $movement->CONCEPT }}
-                        </p>
-                        <p class="text-center">Cantidad
-                            {{ $movement->QUANTITY }}
-                        </p>
+                        <p class="text-center">De {{ $movement->fromIBAN }}</p>
+                        <p class="text-center">A {{ $movement->toIBAN }}</p>
+                        <p class="text-center">Concepto {{ $movement->CONCEPT }}</p>
+                        <p class="text-center">Cantidad {{ $movement->QUANTITY }}</p>
                     </div>
+
                     @php
                         $count++;
                         if ($count == 2) {
                             break;
                         }
                     @endphp
-                @endforeach
+                @endfor
+
 
 
                 <small><a href="#">Ver todos los movimientos</a></small>
