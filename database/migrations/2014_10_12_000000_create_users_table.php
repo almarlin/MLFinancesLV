@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->integer('id',true);
             $table->integer('NIF');
-            $table->string('NAME', 10)->nullable();
+            $table->string('NAME', 60)->nullable();
             $table->string('SURNAME', 25)->nullable();
             $table->string('email')->nullable();
             $table->integer('AGE')->nullable();

@@ -22,7 +22,7 @@ class UserFactory extends Factory
     {
         return [
             'NIF'=>$this->faker->randomNumber(8),
-            'NAME'=>$this->faker->lexify(),
+            'NAME'=>$this->faker->name(),
             'SURNAME'=>$this->faker->numerify(),
             'email'=>$this->faker->email(),
             'AGE'=>$this->faker->randomNumber(2),
