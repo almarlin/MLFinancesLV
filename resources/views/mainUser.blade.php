@@ -7,6 +7,40 @@
 @section('title', 'Mi panel')
 
 @section('content')
+
+    <aside class="mt-1">
+        <button class="btn btn-danger text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Chat ></button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title fs-4 fw-bold" id="offcanvasBottomLabel">Chat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body small">
+                <h3 class="fw-light fs-4">Contactos</h3>
+                <div>lista contactos</div>
+                <div>imagen añadir contactos</div>
+                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">Contacto 1</h3>
+                <div>conversación</div>
+                <form action=""method='POST'>
+                    <div class="mb-3 container">
+                        <div class="row">
+                            <div class="col-8">
+                                <input type="password" class="form-control" name="inpuMessage" id="inpuMessage"
+                                    placeholder="Mensaje">
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </aside>
+
     <div class="container-fluid mb-5">
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
@@ -49,6 +83,7 @@
     </div>
 
     <div class="container">
+
         <div class="row justify-content-center align-items-center">
             <div class="col-12 fw-light fs-3">Últimos movimientos</div>
         </div>
@@ -59,8 +94,10 @@
                     use App\Models\Movement;
                     // Para identificar todos los movimientos del usuario, recibidos y realizados.
                     // Cogemos su id (desde la autenticacion) y lo buscamos en la bbdd tanto como destinatario como ejecutor.
-                    // Finalmente mostramos los movimientos de mas reciente a mas antiguo. 
-                    $idUserAccount = auth()->user()->accounts->first()->id;
+                    // Finalmente mostramos los movimientos de mas reciente a mas antiguo.
+                    $idUserAccount = auth()
+                        ->user()
+                        ->accounts->first()->id;
                     $movements = Movement::where('account_id', $idUserAccount)
                         ->orWhere('toaccount_id', $idUserAccount)
                         ->get();
@@ -89,8 +126,8 @@
 
 
 
-                <small><a href="{{route('verMovimientos')}}">Ver todos los movimientos</a></small>
-                <small><a href="{{route('verPrestamos')}}">Consultar mis préstamos</a></small>
+                <small><a href="{{ route('verMovimientos') }}">Ver todos los movimientos</a></small>
+                <small><a href="{{ route('verPrestamos') }}">Consultar mis préstamos</a></small>
 
             </div>
             <div class="col-12 col-md-6">
