@@ -62,4 +62,6 @@ Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware(
 
 Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware('auth')->name('verPrestamos');
 
+Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->middleware('auth')->name('verMovimientos');
+
 

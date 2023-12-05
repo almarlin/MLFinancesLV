@@ -79,4 +79,11 @@ class MovementController extends Controller
 
         return redirect(route('mipanel'));  
     }
+
+    public function showMovements(){
+        $movements = Movement::where('account_id',auth()->user()->accounts->first()->id)->paginate(5);
+       
+
+        return view('users.verMovimientos', compact('movements'));
+    }
 }

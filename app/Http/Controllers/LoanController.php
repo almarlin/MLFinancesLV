@@ -28,7 +28,7 @@ class LoanController extends Controller
     {
     }
 
-    public function showLoan(Request $request)
+    public function showLoan()
     {
        $loans = Loan::where('account_id',auth()->user()->accounts->first()->id)->paginate(5);
        
