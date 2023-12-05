@@ -46,18 +46,18 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
 Route::view('/adminPanel', 'mainAdmin')->middleware('auth')->name('panelAdmin');
 
-Route::view('/ingresar','ingresar')->middleware('auth')->name('ingresar');
+Route::view('/ingresar','users.ingresar')->middleware('auth')->name('ingresar');
 Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
 
 
-Route::view('/retirar','retirar')->middleware('auth')->name('retirar');
+Route::view('/retirar','users.retirar')->middleware('auth')->name('retirar');
 Route::post('/postRetirar',[MovementController::class,'substract'])->middleware('auth')->name('postRetirar');
 
-Route::view('/enviar','enviar')->middleware('auth')->name('enviar');
+Route::view('/enviar','users.enviar')->middleware('auth')->name('enviar');
 Route::post('/postEnviar',[MovementController::class,'send'])->middleware('auth')->name('postEnviar');
 
 
-Route::view('/solicitar', 'solicitudPrestamoUser')->middleware('auth')->name('solicitar');
+Route::view('/solicitar', 'users.solicitudPrestamoUser')->middleware('auth')->name('solicitar');
 Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware('auth')->name('postSolicitar');
 
 
