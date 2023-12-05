@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('loan', function (Blueprint $table) {
-            $table->integer('ID_LOAN', true);
+        Schema::create('loans', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->integer('account_id');
             $table->date('EXPEDITIONDATE')->nullable();
             $table->float('MONTHLYPAYMENT', 10, 0)->nullable();
             $table->integer('TERMS')->nullable();
