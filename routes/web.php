@@ -44,7 +44,7 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 */
 
 Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
-Route::view('/adminPanel', 'mainAdmin')->middleware('auth')->name('panelAdmin');
+Route::view('/adminPanel', 'mainAdmin')->middleware(['auth','admin'])->name('panelAdmin');
 
 Route::view('/ingresar','users.ingresar')->middleware('auth')->name('ingresar');
 Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
