@@ -60,4 +60,6 @@ Route::post('/postEnviar',[MovementController::class,'send'])->middleware('auth'
 Route::view('/solicitar', 'users.solicitudPrestamoUser')->middleware('auth')->name('solicitar');
 Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware('auth')->name('postSolicitar');
 
+Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware('auth')->name('verPrestamos');
+
 

@@ -90,7 +90,7 @@
 
 
                 <small><a href="#">Ver todos los movimientos</a></small>
-                <small><a href="#">Consultar mis préstamos</a></small>
+                <small><a href="{{route('verPrestamos')}}">Consultar mis préstamos</a></small>
 
             </div>
             <div class="col-12 col-md-6">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loan;
+use App\Models\User;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
@@ -24,5 +26,13 @@ class LoanController extends Controller
 
     public function approveLoan(Request $request)
     {
+    }
+
+    public function showLoan(Request $request)
+    {
+        $loans = User::paginate(5);
+        
+
+        return view('users.verPrestamos', compact('loans'));
     }
 }
