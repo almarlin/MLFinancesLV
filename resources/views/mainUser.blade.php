@@ -60,9 +60,9 @@
                     // Para identificar todos los movimientos del usuario, recibidos y realizados.
                     // Cogemos su id (desde la autenticacion) y lo buscamos en la bbdd tanto como destinatario como ejecutor.
                     // Finalmente mostramos los movimientos de mas reciente a mas antiguo. 
-                    $idUsuario = auth()->id();
-                    $movements = Movement::where('account_id', $idUsuario)
-                        ->orWhere('toaccount_id', $idUsuario)
+                    $idUserAccount = auth()->user()->accounts->first()->id;
+                    $movements = Movement::where('account_id', $idUserAccount)
+                        ->orWhere('toaccount_id', $idUserAccount)
                         ->get();
                     $count = 0;
                 @endphp
