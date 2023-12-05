@@ -30,8 +30,8 @@ class LoanController extends Controller
 
     public function showLoan(Request $request)
     {
-        $loans = User::paginate(5);
-        
+       $loans = Loan::where('account_id',auth()->user()->accounts->first()->id)->paginate(5);
+       
 
         return view('users.verPrestamos', compact('loans'));
     }
