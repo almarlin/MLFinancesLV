@@ -19,7 +19,11 @@ class AccountController extends Controller
             $position=ord(strtoupper($letter)) - ord('A') + 1;
             $binary.=$binary.decbin($position);
         }
-
+        while(Account::where('IBAN',$binary)->exists()){
+            $binary.="1";
+           
+        }
+        
         return $binary;
 
     }

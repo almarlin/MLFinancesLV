@@ -55,9 +55,12 @@ class LoginController extends Controller
 
         $user->save();
 
-        $account=new Account();
-        $account->balance=300;
+        $account = new Account();
+        $account->BALANCE = 300;
 
+        $accountController = new AccountController();
+        $account->IBAN = $accountController->generateIban($user->name);
+        $account->user_id = $user->id;
         $account->save();
 
 
@@ -83,8 +86,8 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             return redirect()->intended('panel');
-        } else{
-            return redirect()->route('login')->with(['error'=>'Usuario o contraseña incorrectos.']);
+        } else {
+            return redirect()->route('login')->with(['error' => 'Usuario o contraseña incorrectos.']);
         }
     }
     public function logout(Request $request)
