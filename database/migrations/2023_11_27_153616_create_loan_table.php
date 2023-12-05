@@ -22,6 +22,8 @@ return new class extends Migration
             $table->float('TOTAL', 10, 0)->nullable();
             $table->float('INTEREST', 10, 0)->nullable();
             $table->date('DUEDATE')->nullable();
+            $table->boolean('APPROVED');
+            $table->timestamps();
         });
     }
 

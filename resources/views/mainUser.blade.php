@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2">
-            <button class="col-1 btn btn-danger">Solicitar</button>
+            <a href="{{ route('solicitar') }}"><button class="col-1 btn btn-danger">Solicitar</button></a>
         </div>
     </div>
 @endsection

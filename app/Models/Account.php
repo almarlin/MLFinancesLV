@@ -16,8 +16,15 @@ class Account extends Model
         'IBAN',
         'user_id'
     ];
+
+
     public function movements(): HasMany
     {
         return $this->hasMany(Movement::class);
+    }
+
+    public function loans(): HasMany
+    {
+        return $this->hasMany(Loan::class);
     }
 }
