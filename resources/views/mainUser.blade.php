@@ -19,8 +19,27 @@
             </div>
             <div class="offcanvas-body small">
                 <h3 class="fw-light fs-4">Contactos</h3>
-                <div>lista contactos</div>
-                <div>imagen añadir contactos</div>
+                <div class="h-25 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
+                    @php
+                        use App\Models\Contact;
+                        use App\Models\User;
+
+                        $idUser = auth()->user()->id;
+                        $contacts = Contact::where('user_id', $idUser)
+                            ->orWhere('contact_id', $idUser)
+                            ->get();
+                        $emails = [];
+                        foreach ($contacts as $contact) {
+                            $email = User::where('id', $contact->id);
+                            array_push($emails, $email->first()->email);
+                        }
+                    @endphp
+                    
+
+
+
+                </div>
+                <div><a href="{{ route('addContact') }}">Añadir contacto</a> </div>
                 <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">Contacto 1</h3>
                 <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @php
@@ -33,13 +52,12 @@
                     @endphp
 
                     @foreach ($messages as $message)
-                        
                         <div class="row mb-2">
-                            <p class="col-6 rounded border border-2 border-danger">{{ $message->content}}</p>
+                            <p class="col-6 rounded border border-2 border-danger">{{ $message->content }}</p>
                         </div>
                     @endforeach
                 </div>
-                <form action="{{route('sendMessage')}}" method='POST'>
+                <form action="{{ route('sendMessage') }}" method='POST'>
                     @csrf
                     <div class="mb-3 container">
                         <div class="row">

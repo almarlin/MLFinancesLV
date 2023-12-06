@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\LoginController;
@@ -66,4 +67,6 @@ Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware('
 
 Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->middleware('auth')->name('verMovimientos');
 
+Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware('auth')->name('addContact');
+Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware('auth')->name('postAnyadirContacto');
 
