@@ -22,16 +22,36 @@
                 <div>lista contactos</div>
                 <div>imagen añadir contactos</div>
                 <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">Contacto 1</h3>
-                <div>conversación</div>
-                <form action=""method='POST'>
+                <div class="h-50 bg-light mb-2 mt-2 rounded-2 container">
+                    @php
+                        use App\Models\Message;
+
+                        $idUser = auth()->user()->id;
+                        $messages = Message::where('user_id', $idUser)
+                            ->orWhere('receiver_id', $idUser)
+                            ->get();
+                    @endphp
+
+                    @for ($i = count($messages) - 1; $i >= 0; $i--)
+                        @php
+                            $message = $messages[$i];
+                        @endphp
+
+                        <div class="row mb-2">
+                            <p class="col-6 rounded border border-2 border-danger">{{ $message->content}}</p>
+                        </div>
+                    @endfor
+                </div>
+                <form action="{{route('sendMessage')}}" method='POST'>
+                    @csrf
                     <div class="mb-3 container">
                         <div class="row">
                             <div class="col-8">
-                                <input type="password" class="form-control" name="inpuMessage" id="inpuMessage"
+                                <input type="text" class="form-control" name="inputMessage" id="inputMessage"
                                     placeholder="Mensaje">
                             </div>
                             <div class="col-3">
-                                <button type="submit" class="btn btn-primary">Entrar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
                             </div>
                         </div>
                     </div>
