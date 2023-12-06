@@ -22,7 +22,7 @@
                 <div>lista contactos</div>
                 <div>imagen añadir contactos</div>
                 <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">Contacto 1</h3>
-                <div class="h-50 bg-light mb-2 mt-2 rounded-2 container">
+                <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @php
                         use App\Models\Message;
 
@@ -32,15 +32,12 @@
                             ->get();
                     @endphp
 
-                    @for ($i = count($messages) - 1; $i >= 0; $i--)
-                        @php
-                            $message = $messages[$i];
-                        @endphp
-
+                    @foreach ($messages as $message)
+                        
                         <div class="row mb-2">
                             <p class="col-6 rounded border border-2 border-danger">{{ $message->content}}</p>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
                 <form action="{{route('sendMessage')}}" method='POST'>
                     @csrf
