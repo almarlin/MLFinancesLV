@@ -10,40 +10,18 @@
 
     <aside class="mt-1">
         <button class="btn btn-danger text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Chat ></button>
+            data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ayuda ></button>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title fs-4 fw-bold" id="offcanvasBottomLabel">Chat</h5>
+                <h5 class="offcanvas-title fs-4 fw-bold" id="offcanvasBottomLabel">Ayuda</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body small">
-                <h3 class="fw-light fs-4">Contactos</h3>
-                <div class="h-25 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
-                    @php
-                        use App\Models\Contact;
-                        use App\Models\User;
+                <h3 class="fw-light fs-4">Chat</h3>
 
-                        $idUser = auth()->user()->id;
-                        $contacts = Contact::where('user_id', $idUser)->get();
-                        $emails = [];
-                        foreach ($contacts as $contact) {
-                            $contact = User::where('id', $contact->contact_id);
-                            array_push($emails, $contact->first()->email);
-                        }
-                        $emailSelected = $emails[1];
-                    @endphp
-                    <form action="{{route('selectContact')}}" method="POST">
-                        @for ($i = 1; $i < count($emails); $i++)
-                            <button type="submit" name={{ $emails[$i] }} class="btn btn-danger text-light m-2">{{ $emails[$i] }}</button>
-                        @endfor
-                    </form>
-
-
-
-                </div>
-                <div><a href="{{ route('addContact') }}">Añadir contacto</a> </div>
-                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">{{ $emailSelected }}</h3>
+                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
+                </h3>
                 <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @php
                         use App\Models\Message;
@@ -52,11 +30,14 @@
                         $messages = Message::where('user_id', $idUser)
                             ->orWhere('receiver_id', $idUser)
                             ->get();
+
                     @endphp
 
                     @foreach ($messages as $message)
-                        <div class="row mb-2">
-                            <p class="col-6 rounded border border-2 border-danger">{{ $message->content }}</p>
+                        <div class="d-flex mb-2 @if ($message->receiver_id == $idUser) justify-content-start @else justify-content-end @endif">
+                            <p class="d-flex p-1 rounded border border-1 border-danger @if ($message->receiver_id == $idUser) text-light bg-danger text-start @else text-end @endif">
+                                {{ $message->content }}
+                            </p>
                         </div>
                     @endforeach
                 </div>
