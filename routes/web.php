@@ -70,3 +70,4 @@ Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->m
 Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware('auth')->name('addContact');
 Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware('auth')->name('postAnyadirContacto');
 
+Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware('auth')->name('selectContact');

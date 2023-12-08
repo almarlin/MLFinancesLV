@@ -25,22 +25,25 @@
                         use App\Models\User;
 
                         $idUser = auth()->user()->id;
-                        $contacts = Contact::where('user_id', $idUser)
-                            ->orWhere('contact_id', $idUser)
-                            ->get();
+                        $contacts = Contact::where('user_id', $idUser)->get();
                         $emails = [];
                         foreach ($contacts as $contact) {
-                            $email = User::where('id', $contact->id);
-                            array_push($emails, $email->first()->email);
+                            $contact = User::where('id', $contact->contact_id);
+                            array_push($emails, $contact->first()->email);
                         }
+                        $emailSelected = $emails[1];
                     @endphp
-                    
+                    <form action="{{route('selectContact')}}" method="POST">
+                        @for ($i = 1; $i < count($emails); $i++)
+                            <button type="submit" name={{ $emails[$i] }} class="btn btn-danger text-light m-2">{{ $emails[$i] }}</button>
+                        @endfor
+                    </form>
 
 
 
                 </div>
                 <div><a href="{{ route('addContact') }}">Añadir contacto</a> </div>
-                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">Contacto 1</h3>
+                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2">{{ $emailSelected }}</h3>
                 <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @php
                         use App\Models\Message;
