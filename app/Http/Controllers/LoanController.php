@@ -16,7 +16,7 @@ class LoanController extends Controller
 
         $loanRequest->account_id = $request->user()->accounts->first()->id;
         $loanRequest->total = $request->input('inputQuantity');
-        $loanRequest->approved = false;
+        $loanRequest->approved = null;
 
         $loanRequest->save();
 
@@ -30,9 +30,19 @@ class LoanController extends Controller
 
     public function showLoan()
     {
-       $loans = Loan::where('account_id',auth()->user()->accounts->first()->id)->paginate(5);
-       
+        $loans = Loan::where('account_id', auth()->user()->accounts->first()->id)->paginate(5);
+
 
         return view('users.verPrestamos', compact('loans'));
+    }
+
+
+    public function adminLoans()
+    {
+
+        $loans = Loan::where('approved', null)->get();
+        
+
+        return view('adminLoans',compact('loans'));
     }
 }
