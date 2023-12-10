@@ -31,7 +31,7 @@
                     }
                 @endphp
             @endforeach
-            <a href="#">Ver todos los movimientos</a>
+            <a href="{{route('movimientosBanco')}}">Ver todos los movimientos</a>
         </div>
 
         <h2 class="fw-light fs-3 mt-4 mb-4">Cuentas</h2>
@@ -59,7 +59,7 @@
                     }
                 @endphp
             @endforeach
-            <a href="#">Ver todos las cuentas</a>
+            <a href="{{route('cuentasBanco')}}">Ver todos las cuentas</a>
         </div>
 
         <h2 class="fw-light fs-3 mt-4 mb-4">Usuarios</h2>
@@ -87,7 +87,7 @@
 
                 
             @endforeach
-            <a href="#">Ver todos los usuarios</a>
+            <a href="{{route('usuariosBanco')}}">Ver todos los usuarios</a>
         </div>
 
     </div>

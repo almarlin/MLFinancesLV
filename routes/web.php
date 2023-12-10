@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\LoanController;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 */
 
 Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
-Route::view('/adminPanel', 'mainAdmin')->middleware(['auth','admin'])->name('panelAdmin');
+
 
 Route::post('/envioMensaje',[MessageController::class,'sendMessage'])->middleware('auth')->name('sendMessage');
 
@@ -71,3 +72,9 @@ Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware('auth')-
 Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware('auth')->name('postAnyadirContacto');
 
 Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware('auth')->name('selectContact');
+
+
+Route::view('/adminPanel', 'mainAdmin')->middleware(['auth','admin'])->name('panelAdmin');
+Route::get('/adminPanel/movimientos',[MovementController::class,'adminMovements'])->middleware(['auth','admin'])->name('movimientosBanco');
+Route::get('/adminPanel/cuentas',[AccountController::class,'adminAccounts'])->middleware(['auth','admin'])->name('cuentasBanco');
+Route::get('/adminPanel/usuarios',[UserController::class,'adminUsers'])->middleware(['auth','admin'])->name('usuariosBanco');

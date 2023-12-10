@@ -27,4 +27,13 @@ class AccountController extends Controller
         return $binary;
 
     }
+
+    public function adminAccounts(){
+        $accounts = Account::paginate(5);
+       
+
+        return view('adminAccounts', compact('accounts'));
+
+
+    }
 }

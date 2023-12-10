@@ -86,4 +86,11 @@ class MovementController extends Controller
 
         return view('users.verMovimientos', compact('movements'));
     }
+
+    public function adminMovements(){
+        $movements = Movement::paginate(5);
+       
+
+        return view('adminMovements', compact('movements'));
+    }
 }

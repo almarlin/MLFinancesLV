@@ -21,7 +21,12 @@ class UserController extends Controller
         return view('users.loginUser');
     }
 
+public function adminUsers(){
+    $users = User::paginate(5);
+       
 
+        return view('adminUsers', compact('users'));
+}
 
 
 
