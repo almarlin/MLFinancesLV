@@ -34,7 +34,9 @@ Route::post('/iniciaSesion', [LoginController::class, 'login'])->name('inicia-se
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
 
-// Rutas que requieren verificación de credenciales llevan el middleware 'auth'
+// Rutas que requieren verificación de credenciales llevan el middleware 'auth'.
+// Rutas solo accesibles por el usuario llevan el middleware 'onlyUser'.
+// Rutas solo accesibles por el administrador llevan el middleware 'admin'.
 
 /*
 Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth. Puntos a tener en cuenta:
@@ -45,33 +47,33 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 - Para evitar conflictos se regenera la sesion después de autenticar.
 */
 
-Route::view('/panel', 'mainUser')->middleware('auth')->name('mipanel');
+Route::view('/panel', 'mainUser')->middleware(['auth','onlyUser'])->name('mipanel');
 
 
-Route::post('/envioMensaje',[MessageController::class,'sendMessage'])->middleware('auth')->name('sendMessage');
+Route::post('/envioMensaje',[MessageController::class,'sendMessage'])->middleware(['auth','onlyUser'])->name('sendMessage');
 
-Route::view('/ingresar','users.ingresar')->middleware('auth')->name('ingresar');
-Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware('auth')->name('postIngresar');
-
-
-Route::view('/retirar','users.retirar')->middleware('auth')->name('retirar');
-Route::post('/postRetirar',[MovementController::class,'substract'])->middleware('auth')->name('postRetirar');
-
-Route::view('/enviar','users.enviar')->middleware('auth')->name('enviar');
-Route::post('/postEnviar',[MovementController::class,'send'])->middleware('auth')->name('postEnviar');
+Route::view('/ingresar','users.ingresar')->middleware(['auth','onlyUser'])->name('ingresar');
+Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware(['auth','onlyUser'])->name('postIngresar');
 
 
-Route::view('/solicitar', 'users.solicitudPrestamoUser')->middleware('auth')->name('solicitar');
-Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware('auth')->name('postSolicitar');
+Route::view('/retirar','users.retirar')->middleware(['auth','onlyUser'])->name('retirar');
+Route::post('/postRetirar',[MovementController::class,'substract'])->middleware(['auth','onlyUser'])->name('postRetirar');
 
-Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware('auth')->name('verPrestamos');
+Route::view('/enviar','users.enviar')->middleware(['auth','onlyUser'])->name('enviar');
+Route::post('/postEnviar',[MovementController::class,'send'])->middleware(['auth','onlyUser'])->name('postEnviar');
 
-Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->middleware('auth')->name('verMovimientos');
 
-Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware('auth')->name('addContact');
-Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware('auth')->name('postAnyadirContacto');
+Route::view('/solicitar', 'users.solicitudPrestamoUser')->middleware(['auth','onlyUser'])->name('solicitar');
+Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware(['auth','onlyUser'])->name('postSolicitar');
 
-Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware('auth')->name('selectContact');
+Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser'])->name('verPrestamos');
+
+Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser'])->name('verMovimientos');
+
+Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware(['auth','onlyUser'])->name('addContact');
+Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware(['auth','onlyUser'])->name('postAnyadirContacto');
+
+Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware(['auth','onlyUser'])->name('selectContact');
 
 
 Route::view('/adminPanel', 'mainAdmin')->middleware(['auth','admin'])->name('panelAdmin');
