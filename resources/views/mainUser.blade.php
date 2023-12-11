@@ -5,7 +5,7 @@
 @endsection
 
 @section('script')
-<script src="{{asset('js/currencyChange.js')}}"></script>
+<script defer src="{{asset('../resources/js/currencyChange.js')}}"></script>
 @endsection
 
 @section('title', 'Mi panel')
@@ -79,15 +79,16 @@
             <div class="col-4"></div>
             <div class="col-4 text-center">Img cartera</div>
             <div class="col-4 d-flex btn-group-md">
-                <button onclick="changeCurrency('euro')" class="btn rounded-0 btn-primary active" id='euro'>€</button>
+                <button onclick="changeCurrency('euro')" class="btn rounded-0 btn-primary" id='euro'>€</button>
                 <button onclick="changeCurrency('dollar')" class="btn rounded-0 btn-primary" id='dollar'>$</button>
-                <button onclick="changeCurrency('yen')" class="btn rounded-0 btn-primary" id='yen'>&</button>
+                <button onclick="changeCurrency('pound')" class="btn rounded-0 btn-primary" id='pound'>&</button>
+                <button onclick="changeCurrency('yen')" class="btn rounded-0 btn-primary" id='yen'>#</button>
                 <button onclick="changeCurrency('ruble')" class="btn rounded-0 btn-primary" id='ruble'>@</button>
             </div>
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center display-6">
+                <p class="text-center display-6" id="balance">
                     @auth
                         {{ auth()->user()->accounts->first()->BALANCE }}
                     @endauth
