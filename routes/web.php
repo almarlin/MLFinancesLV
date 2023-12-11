@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
@@ -76,7 +77,7 @@ Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->mid
 Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware(['auth','onlyUser'])->name('selectContact');
 
 
-Route::view('/adminPanel', 'mainAdmin')->middleware(['auth','admin'])->name('panelAdmin');
+Route::get('/adminPanel',[AdminController::class,'mainAdmin'])->middleware(['auth','admin'])->name('panelAdmin');
 Route::get('/adminPanel/movimientos',[MovementController::class,'adminMovements'])->middleware(['auth','admin'])->name('movimientosBanco');
 Route::get('/adminPanel/cuentas',[AccountController::class,'adminAccounts'])->middleware(['auth','admin'])->name('cuentasBanco');
 Route::get('/adminPanel/usuarios',[UserController::class,'adminUsers'])->middleware(['auth','admin'])->name('usuariosBanco');
@@ -84,3 +85,5 @@ Route::get('/adminPanel/prestamos',[LoanController::class,'adminLoans'])->middle
 Route::view('/adminPanel/buscarUser','adminFindUser')->middleware(['auth','admin'])->name('buscarUser');
 Route::post('/adminPanel/usuarioPorNif',[UserController::class,'userByNif'])->middleware(['auth','admin'])->name('usuarioPorNif');
 Route::post('/adminPanel/usuarioPorNif/usuarioBan',[UserController::class,'banUser'])->middleware(['auth','admin'])->name('usuarioBan');
+Route::any('/adminPanel/chat',[AdminController::class,'getChatMessages'])->middleware(['auth','admin'])->name('adminChat');
+Route::post('/adminPanel/chat/envioAdmin',[MessageController::class,'adminSendMessage'])->middleware(['auth','admin'])->name('adminSendMessage');
