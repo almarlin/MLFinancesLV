@@ -4,6 +4,10 @@
     @extends('layouts.navbarhome')
 @endsection
 
+@section('script')
+<script src="{{asset('js/currencyChange.js')}}"></script>
+@endsection
+
 @section('title', 'Mi panel')
 
 @section('content')
@@ -75,10 +79,10 @@
             <div class="col-4"></div>
             <div class="col-4 text-center">Img cartera</div>
             <div class="col-4 d-flex btn-group-md">
-                <button class="btn rounded-0 btn-primary active">€</button>
-                <button class="btn rounded-0 btn-primary">$</button>
-                <button class="btn rounded-0 btn-primary">&</button>
-                <button class="btn rounded-0 btn-primary">@</button>
+                <button onclick="changeCurrency('euro')" class="btn rounded-0 btn-primary active" id='euro'>€</button>
+                <button onclick="changeCurrency('dollar')" class="btn rounded-0 btn-primary" id='dollar'>$</button>
+                <button onclick="changeCurrency('yen')" class="btn rounded-0 btn-primary" id='yen'>&</button>
+                <button onclick="changeCurrency('ruble')" class="btn rounded-0 btn-primary" id='ruble'>@</button>
             </div>
         </div>
         <div class="row justify-content-center align-items-center">
