@@ -79,3 +79,6 @@ Route::get('/adminPanel/movimientos',[MovementController::class,'adminMovements'
 Route::get('/adminPanel/cuentas',[AccountController::class,'adminAccounts'])->middleware(['auth','admin'])->name('cuentasBanco');
 Route::get('/adminPanel/usuarios',[UserController::class,'adminUsers'])->middleware(['auth','admin'])->name('usuariosBanco');
 Route::get('/adminPanel/prestamos',[LoanController::class,'adminLoans'])->middleware(['auth','admin'])->name('prestamosBanco');
+Route::view('/adminPanel/buscarUser','adminFindUser')->middleware(['auth','admin'])->name('buscarUser');
+Route::post('/adminPanel/usuarioPorNif',[UserController::class,'userByNif'])->middleware(['auth','admin'])->name('usuarioPorNif');
+Route::post('/adminPanel/usuarioPorNif/usuarioBan',[UserController::class,'banUser'])->middleware(['auth','admin'])->name('usuarioBan');
