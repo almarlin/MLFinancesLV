@@ -84,7 +84,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $user = Auth::user();
 
+            if ($user->ADMIN == 1) {
+
+                return redirect(route('panelAdmin'));
+            }
             return redirect()->intended('panel');
         } else {
             return redirect()->route('login')->with(['error' => 'Usuario o contraseña incorrectos.']);
