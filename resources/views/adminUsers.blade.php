@@ -1,10 +1,10 @@
 @extends('layouts.template')
 
 @section('navbar')
-    @extends('layouts.navbarhome')
+    @extends('layouts.navbarAdmin')
 @endsection
 
-@section('title', 'Cuentas')
+@section('title', 'Usuarios')
 
 @section('content')
 

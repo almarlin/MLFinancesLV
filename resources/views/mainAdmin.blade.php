@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('navbar')
-    @extends('layouts.navbarhome')
+    @extends('layouts.navbarAdmin')
 @endsection
 
 @section('title', 'Panel de administración')
@@ -59,7 +59,7 @@
                     }
                 @endphp
             @endforeach
-            <a href="{{route('cuentasBanco')}}">Ver todos las cuentas</a>
+            <a href="{{route('cuentasBanco')}}">Ver todas las cuentas</a>
         </div>
 
         <h2 class="fw-light fs-3 mt-4 mb-4">Usuarios</h2>
