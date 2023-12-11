@@ -89,8 +89,11 @@ class LoginController extends Controller
             if ($user->ADMIN == 1) {
 
                 return redirect(route('panelAdmin'));
+            } else if ($user->BAN) {
+                return redirect()->route('login')->with(['error' => 'Usuario bloqueado.']);
+            } else {
+                return redirect()->intended('panel');
             }
-            return redirect()->intended('panel');
         } else {
             return redirect()->route('login')->with(['error' => 'Usuario o contraseña incorrectos.']);
         }
