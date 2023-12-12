@@ -26,7 +26,24 @@ class LoanController extends Controller
 
     public function approveLoan(Request $request)
     {
+        $input = $request->except('_token');
+
+        foreach ($input as $loanId => $approve) {
+
+
+            $loan = Loan::find($loanId);
+
+            if($approve=="true"){
+                $loan->APPROVED =  1;
+            }else{
+                $loan->APPROVED = 0;
+            }
+            $loan->save();
+        }
+
+        return redirect(route('prestamosBanco'));
     }
+
 
     public function showLoan()
     {
@@ -41,8 +58,8 @@ class LoanController extends Controller
     {
 
         $loans = Loan::where('approved', null)->get();
-        
 
-        return view('adminLoans',compact('loans'));
+
+        return view('adminLoans', compact('loans'));
     }
 }

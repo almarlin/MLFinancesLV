@@ -87,3 +87,5 @@ Route::post('/adminPanel/usuarioPorNif',[UserController::class,'userByNif'])->mi
 Route::post('/adminPanel/usuarioPorNif/usuarioBan',[UserController::class,'banUser'])->middleware(['auth','admin'])->name('usuarioBan');
 Route::any('/adminPanel/chat',[AdminController::class,'getChatMessages'])->middleware(['auth','admin'])->name('adminChat');
 Route::post('/adminPanel/chat/envioAdmin',[MessageController::class,'adminSendMessage'])->middleware(['auth','admin'])->name('adminSendMessage');
+Route::post('/adminPanel/aprobarprestamos',[LoanController::class,'approveLoan'])->middleware(['auth','admin'])->name('approveLoans');
+
