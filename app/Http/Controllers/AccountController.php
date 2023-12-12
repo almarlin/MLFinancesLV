@@ -11,6 +11,7 @@ class AccountController extends Controller
     {
         $binary = "";
         $userName=str_replace(" ","",$userName);
+        $userName=str_replace(".","",$userName);
     
         // Asegurarse de que el nombre de usuario tiene al menos 4 caracteres
         if (strlen($userName) < 4) {
