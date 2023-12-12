@@ -115,15 +115,16 @@ class LoanController extends Controller
     {
         $userAccount = Account::where('user_id', $user->id)->first();
         $loan = Loan::where('account_id', $userAccount->id)->first();
+        if ($loan) {
+            while (Carbon::now() > $loan->NEXTPAYMENT) {
+                $userAccount->BALANCE -= $loan->MONTHLYPAYMENT;
+                $loan->TERMS -= 1;
 
-        while (Carbon::now() > $loan->NEXTPAYMENT) {
-            $userAccount->BALANCE -= $loan->MONTHLYPAYMENT;
-            $loan->TERMS -= 1;
-            
-            $loan->NEXTPAYMENT = Carbon::parse($loan->NEXTPAYMENT)->addMonth();
+                $loan->NEXTPAYMENT = Carbon::parse($loan->NEXTPAYMENT)->addMonth();
+            }
+
+            $userAccount->save();
+            $loan->save();
         }
-
-        $userAccount->save();
-        $loan->save();
     }
 }

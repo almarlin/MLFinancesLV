@@ -24,7 +24,7 @@ class Kernel extends HttpKernel
     ];
     protected $routeMiddleware = [
         // ...
-        'auth' => \App\Http\Middleware\AuthMiddleware::class
+        'auth' => \App\Http\Middleware\Authenticate::class
     ];
 
     /**
@@ -63,6 +63,8 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
 
         'onlyUser' => \App\Http\Middleware\onlyUserMiddleware::class,
+
+        'checkRequestMethod' => \App\Http\Middleware\CheckRequestMethod::class,
 
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
