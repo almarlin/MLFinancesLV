@@ -15,6 +15,7 @@ class Loan extends Model
         'EXPEDITIONDATE',
         'MONTHLYPAYMENT',
         'TERMS',
+        'NEXTPAYMENT',
         'TOTAL',
         'TOPAY',
         'INTEREST',

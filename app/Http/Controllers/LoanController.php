@@ -80,6 +80,7 @@ class LoanController extends Controller
                 }
                 $loan->TOPAY = $loan->TOTAL * (1 + ($loan->INTEREST / 100));
                 $loan->MONTHLYPAYMENT = $loan->TOPAY / $loan->TERMS;
+                $loan->NEXTPAYMENT = Carbon::now()->addMonth();
             } else {
                 $loan->APPROVED = 0;
             }
@@ -107,5 +108,22 @@ class LoanController extends Controller
 
 
         return view('adminLoans', compact('loans'));
+    }
+
+
+    public function monthlyPayment(User $user)
+    {
+        $userAccount = Account::where('user_id', $user->id)->first();
+        $loan = Loan::where('account_id', $userAccount->id)->first();
+
+        while (Carbon::now() > $loan->NEXTPAYMENT) {
+            $userAccount->BALANCE -= $loan->MONTHLYPAYMENT;
+            $loan->TERMS -= 1;
+            
+            $loan->NEXTPAYMENT = Carbon::parse($loan->NEXTPAYMENT)->addMonth();
+        }
+
+        $userAccount->save();
+        $loan->save();
     }
 }

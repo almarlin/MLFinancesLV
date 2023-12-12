@@ -92,6 +92,8 @@ class LoginController extends Controller
             } else if ($user->BAN) {
                 return redirect()->route('login')->with(['error' => 'Usuario bloqueado.']);
             } else {
+                $loanController=new LoanController();
+                $loanController->monthlyPayment($user);
                 return redirect()->intended('panel');
             }
         } else {

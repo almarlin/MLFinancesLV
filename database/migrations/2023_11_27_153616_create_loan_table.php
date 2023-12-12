@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('concept');
             $table->date('EXPEDITIONDATE')->nullable();
             $table->float('MONTHLYPAYMENT', 10, 0)->nullable();
+            $table->date('NEXTPAYMENT')->nullable();
             $table->integer('TERMS')->nullable();
             $table->float('TOTAL', 10, 0)->nullable();
             $table->float('TOPAY', 10, 0)->nullable();
