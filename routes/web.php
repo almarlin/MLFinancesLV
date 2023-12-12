@@ -51,30 +51,27 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 Route::view('/panel', 'mainUser')->middleware(['auth','onlyUser'])->name('mipanel');
 
 
-Route::post('/envioMensaje',[MessageController::class,'sendMessage'])->middleware(['auth','onlyUser'])->name('sendMessage');
+Route::post('/panel/envioMensaje',[MessageController::class,'sendMessage'])->middleware(['auth','onlyUser'])->name('sendMessage');
 
-Route::view('/ingresar','users.ingresar')->middleware(['auth','onlyUser'])->name('ingresar');
-Route::post('/postIngresar',[MovementController::class,'deposit'])->middleware(['auth','onlyUser'])->name('postIngresar');
-
-
-Route::view('/retirar','users.retirar')->middleware(['auth','onlyUser'])->name('retirar');
-Route::post('/postRetirar',[MovementController::class,'substract'])->middleware(['auth','onlyUser'])->name('postRetirar');
-
-Route::view('/enviar','users.enviar')->middleware(['auth','onlyUser'])->name('enviar');
-Route::post('/postEnviar',[MovementController::class,'send'])->middleware(['auth','onlyUser'])->name('postEnviar');
+Route::view('/panel/ingresar','users.ingresar')->middleware(['auth','onlyUser'])->name('ingresar');
+Route::post('/panel/postIngresar',[MovementController::class,'deposit'])->middleware(['auth','onlyUser'])->name('postIngresar');
 
 
-Route::view('/solicitar', 'users.solicitudPrestamoUser')->middleware(['auth','onlyUser'])->name('solicitar');
-Route::post('/postSolicitar',[LoanController::class,'requestLoan'])->middleware(['auth','onlyUser'])->name('postSolicitar');
+Route::view('/panel/retirar','users.retirar')->middleware(['auth','onlyUser'])->name('retirar');
+Route::post('/panel/postRetirar',[MovementController::class,'substract'])->middleware(['auth','onlyUser'])->name('postRetirar');
 
-Route::get('/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser'])->name('verPrestamos');
+Route::view('/panel/enviar','users.enviar')->middleware(['auth','onlyUser'])->name('enviar');
+Route::post('/panel/postEnviar',[MovementController::class,'send'])->middleware(['auth','onlyUser'])->name('postEnviar');
 
-Route::get('/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser'])->name('verMovimientos');
 
-Route::view('/anyadirContacto','users.anyadirContactoUser')->middleware(['auth','onlyUser'])->name('addContact');
-Route::post('/postAnyadirContacto',[ContactController::class,'addContact'])->middleware(['auth','onlyUser'])->name('postAnyadirContacto');
+Route::view('/panel/solicitar', 'users.solicitudPrestamoUser')->middleware(['auth','onlyUser'])->name('solicitar');
+Route::post('/panel/postSolicitar',[LoanController::class,'requestLoan'])->middleware(['auth','onlyUser'])->name('postSolicitar');
 
-Route::post('/postSelectContacto',[ContactController::class,'selectContact'])->middleware(['auth','onlyUser'])->name('selectContact');
+Route::get('/panel/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser'])->name('verPrestamos');
+
+Route::get('/panel/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser'])->name('verMovimientos');
+
+
 
 
 Route::get('/adminPanel',[AdminController::class,'mainAdmin'])->middleware(['auth','admin'])->name('panelAdmin');
