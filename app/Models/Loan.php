@@ -11,10 +11,12 @@ class Loan extends Model
 
     protected $fillable = [
         'account_id',
+        'concept',
         'EXPEDITIONDATE',
         'MONTHLYPAYMENT',
         'TERMS',
         'TOTAL',
+        'TOPAY',
         'INTEREST',
         'DUEDATE'
     ];
