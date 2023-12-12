@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -33,11 +34,26 @@ class LoanController extends Controller
 
             $loan = Loan::find($loanId);
 
-            if($approve=="true"){
+            if ($approve == "true") {
                 $loan->APPROVED =  1;
-            }else{
+
+                $account = Account::find($loan->account_id);
+                $account->BALANCE += $loan->total;
+    
+    
+                $account->save();
+    
+                $loan->INTEREST = 5;
+                
+
+            } else {
                 $loan->APPROVED = 0;
             }
+
+           
+
+
+
             $loan->save();
         }
 
