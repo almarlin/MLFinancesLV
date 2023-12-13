@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 // Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
 use App\Models\User;
 use App\Models\Account;

@@ -75,6 +75,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'inputNif' => ['required', 'Integer', 'min:8 ', 'max:8'],
+            'inputHash' => 'required'
+        ]);
+
         $credentials = [
             'email' => $request->inputNif,
             'password' => $request->inputHash
@@ -92,7 +97,7 @@ class LoginController extends Controller
             } else if ($user->BAN) {
                 return redirect()->route('login')->with(['error' => 'Usuario bloqueado.']);
             } else {
-                $loanController=new LoanController();
+                $loanController = new LoanController();
                 $loanController->monthlyPayment($user);
                 return redirect()->intended('panel');
             }

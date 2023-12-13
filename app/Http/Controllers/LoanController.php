@@ -6,14 +6,17 @@ use App\Models\Account;
 use App\Models\Loan;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
-use KitLoong\MigrationsGenerator\Migration\Writer\SquashWriter;
+
 
 class LoanController extends Controller
 {
     public function requestLoan(Request $request)
     {
+        $request->validate([
+            'inputQuantity' => ['required', 'Integer'],
+            'inputConcept' => 'required'
+        ]);
 
         $loanRequest = new Loan();
 

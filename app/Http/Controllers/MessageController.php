@@ -10,9 +10,11 @@ class MessageController extends Controller
 {
     public function sendMessage(Request $request)
     {
+        $request->validate([
+            'inputMessage' => 'required'
+        ]);
 
         $message = new Message();
-
 
         $message->user_id = $request->user()->id;
         $message->content = $request->input('inputMessage');
@@ -26,6 +28,11 @@ class MessageController extends Controller
     public function adminSendMessage(Request $request)
     {
 
+        $request->validate([
+            'user_id' => ['required', 'Integer'],
+            'inputMessage' => 'required'
+
+        ]);
         $message = new Message();
 
         $message->user_id = $request->input('user_id');
@@ -34,9 +41,8 @@ class MessageController extends Controller
 
         $message->save();
 
-        $user=User::find($request->input('user_id'));
+        $user = User::find($request->input('user_id'));
 
         return redirect()->route('adminChat', ['userName' => $user->NAME]);
-
     }
 }

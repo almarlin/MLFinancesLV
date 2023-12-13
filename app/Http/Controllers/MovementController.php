@@ -12,6 +12,12 @@ class MovementController extends Controller
     public function deposit(Request $request)
     {
 
+        $request->validate([
+            'inputConcept'=>'required',
+            'inputQuantity'=>['required','Integer']
+        ]);
+
+        
         $deposit = new Movement();
 
         $deposit->concept = $request->input('inputConcept');
@@ -35,6 +41,11 @@ class MovementController extends Controller
 
     public function substract(Request $request)
     {
+        $request->validate([
+            'inputConcept'=>'required',
+            'inputQuantity'=>['required','Integer']
+        ]);
+
 
         $substract = new Movement();
 
@@ -57,6 +68,12 @@ class MovementController extends Controller
 
     public function send(Request $request)
     {
+        $request->validate([
+            'inputConcept'=>'required',
+            'inputQuantity'=>['required','Integer'],
+            'inputEmail'=>['required','Email']
+        ]);
+
 
         $send = new Movement();
         $send->concept = $request->input('inputConcept');

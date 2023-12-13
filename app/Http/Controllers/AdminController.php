@@ -22,18 +22,21 @@ class AdminController extends Controller
         $movementController = new MovementController();
         $lastMovements = $movementController->showLastMovements();
 
-        $accountController=new AccountController();
+        $accountController = new AccountController();
         $lastAccounts = $accountController->lastCreatedAccounts();
 
-        $userController=new UserController();
+        $userController = new UserController();
         $lastsUsers = $userController->lastUsers();
 
-        return view('mainAdmin', compact('userNames','lastMovements','lastAccounts','lastsUsers'));
+        return view('mainAdmin', compact('userNames', 'lastMovements', 'lastAccounts', 'lastsUsers'));
     }
 
     public function getChatMessages(Request $request)
     {
 
+        $request->validate([
+            'inputUsername' => 'required'
+        ]);
         $userName = $request->input('inputUsername');
 
 
