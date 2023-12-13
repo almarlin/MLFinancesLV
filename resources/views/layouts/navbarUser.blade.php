@@ -23,7 +23,7 @@
                         IMG Perfil
                     </button>
                     <ul class="dropdown-menu bg-danger">
-                        <li><a class="dropdown-item  text-light" href="#">Mis datos</a></li>
+                        <li><a class="dropdown-item  text-light" href="{{route('datosUsuario')}}">Mis datos</a></li>
                         <li><a class="dropdown-item  text-light" href="{{route('logout')}}">Cerrar sesión</a></li>
                         
                     </ul>

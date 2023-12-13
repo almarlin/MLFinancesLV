@@ -70,6 +70,8 @@ Route::post('/panel/postSolicitar',[LoanController::class,'requestLoan'])->middl
 Route::get('/panel/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser'])->name('verPrestamos');
 
 Route::get('/panel/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser'])->name('verMovimientos');
+Route::view('/panel/misDatos', 'users.editarDatos')->middleware(['auth','onlyUser'])->name('datosUsuario');
+Route::post('/panel/misDatos/actualizar', [UserController::class,'changeData'])->middleware(['auth','onlyUser'])->name('actualizarDatos');
 
 
 

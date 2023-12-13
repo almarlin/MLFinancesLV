@@ -50,7 +50,6 @@ class UserController extends Controller
 
             $user->ban = 1;
             $user->save();
-
         } else if ($request->input('userState') === 'unbanUser') {
 
             $user->ban = 0;
@@ -58,5 +57,38 @@ class UserController extends Controller
         }
 
         return redirect(route('buscarUser'));
+    }
+
+    public function changeData(Request $request)
+    {
+        $user = $request->user();
+
+        $user = $request->user();
+
+        $fields = [
+            'NAME' => 'inputName',
+            'SURNAME' => 'inputSurname',
+            'BIRTHDAY' => 'inputBirthday',
+            'ADDRESS' => 'inputAddress',
+            'PC' => 'inputCP',
+            'CITY' => 'inputCity',
+            'PROVINCE' => 'inputProvince',
+            'COUNTRY' => 'inputCountry',
+        ];
+
+        foreach ($fields as $field => $inputKey) {
+            if ($request->filled($inputKey)) {
+                $user->{$field} = $request->input($inputKey);
+            }
+        }
+        $user->save();
+
+        return redirect(route('mipanel'));
+    }
+
+    public function changePassword(Request $request)
+    {
+
+        $user = $request->user();
     }
 }
