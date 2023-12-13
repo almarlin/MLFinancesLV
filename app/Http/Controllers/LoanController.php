@@ -14,7 +14,7 @@ class LoanController extends Controller
     public function requestLoan(Request $request)
     {
         $request->validate([
-            'inputQuantity' => ['required', 'Integer'],
+            'inputQuantity' => ['required', 'integer'],
             'inputConcept' => 'required'
         ]);
 
@@ -36,15 +36,16 @@ class LoanController extends Controller
 
         foreach ($input as $loanId => $approve) {
 
-
             $loan = Loan::find($loanId);
 
             if ($approve == "true") {
                 $loan->APPROVED =  1;
 
                 $account = Account::find($loan->account_id);
-
-                $account->BALANCE += $loan->TOTAL;
+                $accountBalanceDecimal = hexdec($account->BALANCE);
+                $accountBalanceDecimal+=$loan->TOTAL;
+                $account->BALANCE  =dechex($accountBalanceDecimal);
+                
                 $account->save();
 
 

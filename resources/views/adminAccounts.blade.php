@@ -3,14 +3,18 @@
 @section('navbar')
     @extends('layouts.navbarAdmin')
 @endsection
+@section('script')
+    <script defer src="{{ asset('../resources/js/balanceToDecimal.js') }}"></script>
 
+@endsection
 @section('title', 'Cuentas')
+
 
 @section('content')
 
-@php
-   use App\Models\User;
-@endphp
+    @php
+        use App\Models\User;
+    @endphp
 
 
     <div class="row justify-content-center align-items-center">
@@ -21,7 +25,7 @@
                 @foreach ($accounts as $account)
                     <div class="border border-2 border-danger rounded-2 p-3 mb-2">
                         <p class="text-center">IBAN: {{ $account->IBAN }}</p>
-                        <p class="text-center">Balance: {{ $account->BALANCE }}</p>
+                        <p class="text-center">Balance: <span class="balance"> {{ $account->BALANCE }}</span></p>
                         <p class="text-center">Fecha de creación: {{ $account->created_at }}</p>
                         <p class="text-center">Titular: {{ User::where('id', $account->user_id)->first()->NIF }}</p>
                     </div>
