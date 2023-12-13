@@ -11,7 +11,7 @@
 
 
 
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center me-0">
         <div class="col-12 col-md-6">
 
             <div class="container mt-5">

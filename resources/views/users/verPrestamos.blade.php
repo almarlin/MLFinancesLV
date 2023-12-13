@@ -9,16 +9,16 @@
 @section('content')
 
 
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center me-0">
         <div class="col-12 col-md-6">
 
             <div class="container mt-5">
                 <h1 class="display-5 fw-light mb-5">Mis préstamos</h1>
                 @foreach ($loans as $loan)
-                    <div class="border border-2 border-danger rounded-2 p-3">
+                    <div class="border border-2 border-danger rounded-2 p-3 m-3">
                         <p class="text-center">Cantidad solicitada: {{ $loan->TOTAL }}</p>
-                        <p class="text-center">Aprobación: @if ($loan->APPROVED == 0)
-                                Denegado
+                        <p class="text-center">Aprobación: @if ($loan->APPROVED == 'null')
+                                Pendiente
                             @elseif($loan->APPROVED == 1)
                                 Aprobado
                             @else

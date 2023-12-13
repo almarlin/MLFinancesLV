@@ -53,7 +53,7 @@
         <h1 class="text-center display-5">Portal de administración</h1>
 
         <h2 class="fw-light fs-3 mb-4">Últimos movimientos</h2>
-        <div class="row justify-content-center align-items-center g-2">
+        <div class="row justify-content-center align-items-center g-2 me-0">
 
             @foreach ($lastMovements as $bankMovement)
                 <div class="container rounded border border-2 border-danger movimiento mb-2">
@@ -67,7 +67,7 @@
         </div>
 
         <h2 class="fw-light fs-3 mt-4 mb-4">Cuentas</h2>
-        <div class="row justify-content-center align-items-center g-2">
+        <div class="row justify-content-center align-items-center g-2 me-0">
 
 
             @foreach ($lastAccounts as $bankAccount)
@@ -81,7 +81,7 @@
         </div>
 
         <h2 class="fw-light fs-3 mt-4 mb-4">Usuarios</h2>
-        <div class="row justify-content-center align-items-center g-2">
+        <div class="row justify-content-center align-items-center g-2 me-0">
 
             @foreach ($lastsUsers as $bankUser)
                 @if ($bankUser->NAME != 'admin')

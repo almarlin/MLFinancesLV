@@ -20,7 +20,7 @@
         <form action="{{ route('actualizarDatos') }}" method="post" id="form">
             @csrf
             <div class="container">
-                <div class="row justify-content-center align-items-center g-2">
+                <div class="row justify-content-center align-items-center g-2 me-0">
                     <div class="col-12 col-md-1 mb-3">
                         <label for="inputName" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="inputName" id="inputName" aria-describedby="helpId"
@@ -80,7 +80,7 @@
 
         </form>
 
-        <div class="row justify-content-center align-items-center gap-5">
+        <div class="row justify-content-center align-items-center gap-5 me-0">
             <div class="col-12 col-md-5 rounded-2 border border-2 border-danger">
                 <h4 class="fw-light text-center">Cambiar contraseña</h4>
                 <form action="{{ route('actualizarPassword') }}" method="post" id="form">
