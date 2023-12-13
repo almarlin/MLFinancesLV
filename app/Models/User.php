@@ -3,14 +3,49 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
-    // De momento se queda en false para evitar conflictos. Otra opcion es anyadir las columnas de timestamps a la tabla.
-    public $timestamps = false;
+    use HasFactory, HasApiTokens, Notifiable;
 
-    protected $table = 'USER';
-    protected $fillable = ['NAME', 'SURNAME'];
+    protected $fillable = [
+        'NIF',
+        'NAME',
+        'SURNAME',
+        'AGE',
+        'BIRTHDAY',
+        'COUNTRY',
+        'PROVINCE',
+        'CITY',
+        'PC',
+        'ADDRESS',
+        'PHONENUMBER',
+        'passsword',
+        'BAN',
+        'ADMIN',
+        'PROFILEPHOTO'
+    ];
+    protected $hidden = [
+        'HASH',
+        'remember_token'
+    ];
+
+    public function accounts(): HasMany
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

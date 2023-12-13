@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('movement', function (Blueprint $table) {
-            $table->integer('ID_MOVEMENT', true);
-            $table->integer('ID_FROMACCOUNT')->nullable();
-            $table->integer('ID_TOACCOUNT')->nullable();
+        Schema::create('movements', function (Blueprint $table) {
+            $table->integer('id',true);
+            $table->integer('account_id')->nullable();
+            $table->integer('toaccount_id')->nullable();
+            $table->string('fromIBAN',255)->nullable();
+            $table->string('toIBAN',255)->nullable();
             $table->string('CONCEPT', 60)->nullable();
+            $table->integer('QUANTITY')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movement');
+        Schema::dropIfExists('movements');
     }
 };

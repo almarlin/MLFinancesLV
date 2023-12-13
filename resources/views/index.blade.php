@@ -3,7 +3,9 @@
 
 {{-- Para establecer los elementos variables de la platilla se utiliza @section('', '') --}}
 @section('title', 'Home')
-
+@section('navbar')
+    @extends('layouts.navbarhome')
+@endsection
 
 @section('content')
 
