@@ -90,5 +90,16 @@ class UserController extends Controller
     {
 
         $user = $request->user();
+        if(Hash::check($request->input('inputOldPassword'),$user->password) && $request->input('inputNewPassword')==$request->input('inputNewPasswordRepeat')){
+
+            $newPassword=Hash::make($request->input('inputNewPassword'));
+            $user->password=$newPassword;
+            $user->save();
+
+            return redirect(route('mipanel'));
+        }else{
+            return redirect(route('datosUsuario'))->with(['error' => 'Contraseña no coincidiente.']);
+        }
+       
     }
 }

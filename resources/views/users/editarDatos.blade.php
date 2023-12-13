@@ -82,23 +82,23 @@
         <div class="row justify-content-center align-items-center gap-5">
             <div class="col-12 col-md-5 rounded-2 border border-2 border-danger">
                 <h4 class="fw-light text-center">Cambiar contraseña</h4>
-                <form action="" method="post">
+                <form action="{{route('actualizarPassword')}}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="inputOldPassword" class="form-label">Contraseña antigua</label>
-                        <input type="text" class="form-control" name="inputOldPassword" id="inputOldPassword" aria-describedby="helpId"
+                        <input type="password" class="form-control" name="inputOldPassword" id="inputOldPassword" aria-describedby="helpId"
                             placeholder="" />
 
                     </div>
                     <div class="mb-3">
                         <label for="inputNewPassword" class="form-label">Contraseña nueva</label>
-                        <input type="text" class="form-control" name="inputNewPassword" id="inputNewPassword" aria-describedby="helpId"
+                        <input type="password" class="form-control" name="inputNewPassword" id="inputNewPassword" aria-describedby="helpId"
                             placeholder="" />
 
                     </div>
                     <div class="mb-3">
                         <label for="inputNewPasswordRepeat" class="form-label">Repite la contraseña nueva</label>
-                        <input type="text" class="form-control" name="inputNewPasswordRepeat" id="inputNewPasswordRepeat"
+                        <input type="password" class="form-control" name="inputNewPasswordRepeat" id="inputNewPasswordRepeat"
                             aria-describedby="helpId" placeholder="" />
 
                     </div>
@@ -126,7 +126,9 @@
             </div>
 
         </div>
-
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
 
     </div>
 
