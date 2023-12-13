@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('navbar')
-    @extends('layouts.navbarhome')
+    @extends('layouts.navbarUser')
 @endsection
 
 @section('script')

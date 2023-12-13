@@ -67,9 +67,9 @@ Route::post('/panel/postEnviar',[MovementController::class,'send'])->middleware(
 Route::view('/panel/solicitar', 'users.solicitudPrestamoUser')->middleware(['auth','onlyUser'])->name('solicitar');
 Route::post('/panel/postSolicitar',[LoanController::class,'requestLoan'])->middleware(['auth','onlyUser','checkRequestMethod:POST'])->name('postSolicitar');
 
-Route::get('/panel/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser','checkRequestMethod:POST'])->name('verPrestamos');
+Route::get('/panel/verMisPrestamos', [LoanController::class,'showLoan'])->middleware(['auth','onlyUser'])->name('verPrestamos');
 
-Route::get('/panel/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser','checkRequestMethod:POST'])->name('verMovimientos');
+Route::get('/panel/verMisMovimientos', [MovementController::class,'showMovements'])->middleware(['auth','onlyUser'])->name('verMovimientos');
 
 
 

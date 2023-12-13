@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('navbar')
-    @extends('layouts.navbarhome')
+    @extends('layouts.navbarUser')
 @endsection
 
 @section('title', 'Consultar mis préstamos')
@@ -17,7 +17,13 @@
                 @foreach ($loans as $loan)
                     <div class="border border-2 border-danger rounded-2 p-3">
                         <p class="text-center">Cantidad solicitada: {{ $loan->TOTAL }}</p>
-                        <p class="text-center">Aprobación: @if ($loan->APPROVED==0) Denegado @elseif($loan->APPROVED==1) Aprobado @else Pendiente @endif
+                        <p class="text-center">Aprobación: @if ($loan->APPROVED == 0)
+                                Denegado
+                            @elseif($loan->APPROVED == 1)
+                                Aprobado
+                            @else
+                                Pendiente
+                            @endif
                         </p>
                     </div>
                 @endforeach
