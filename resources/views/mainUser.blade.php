@@ -5,7 +5,9 @@
 @endsection
 
 @section('script')
-<script defer src="{{asset('../resources/js/currencyChange.js')}}"></script>
+    <script defer src="{{ asset('../resources/js/balanceToDecimal.js') }}"></script>
+    <script defer src="{{ asset('../resources/js/currencyChange.js') }}"></script>
+    <script defer src="{{ asset('../resources/js/dates.js') }}"></script>
 @endsection
 
 @section('title', 'Mi panel')
@@ -38,8 +40,10 @@
                     @endphp
 
                     @foreach ($messages as $message)
-                        <div class="d-flex mb-2 @if ($message->receiver_id == $idUser) justify-content-start @else justify-content-end @endif">
-                            <p class="d-flex p-1 rounded border border-1 border-danger @if ($message->receiver_id == $idUser) text-light bg-danger text-start @else text-end @endif">
+                        <div
+                            class="d-flex mb-2 @if ($message->receiver_id == $idUser) justify-content-start @else justify-content-end @endif">
+                            <p
+                                class="d-flex p-1 rounded border border-1 border-danger @if ($message->receiver_id == $idUser) text-light bg-danger text-start @else text-end @endif">
                                 {{ $message->content }}
                             </p>
                         </div>
@@ -73,7 +77,7 @@
                 </p>
 
             </div>
-            <div class="col-4">{{ \Carbon\Carbon::now()->format('d-m-Y') }}</div>
+            <div class="col-4" id="date1"></div>
         </div>
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
@@ -98,8 +102,8 @@
         <div class="row justify-content-center align-items-center border border-1 m-5"></div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center fw-light fs-4">Hola <strong>{{ auth()->user()->NAME }}
-                    </strong> hoy es {{ \Carbon\Carbon::now()->format('d-m-Y') }}</p>
+                <p id="dayName" class="text-center fw-light fs-4">Hola <strong>{{ auth()->user()->NAME }}
+                    </strong> hoy es </p>
             </div>
         </div>
 
