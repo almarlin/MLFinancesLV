@@ -3,12 +3,15 @@
 @section('navbar')
 @extends('layouts.navbarUser')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
 
+@endsection
 @section('title', 'Retirar dinero')
 
 @section('content')
     <div class="container mt-5">
-        <form action="{{ route('postRetirar') }}" method="POST">
+        <form action="{{ route('postRetirar') }}" method="POST" id="form">
             @csrf
 
             <div class="mb-3">

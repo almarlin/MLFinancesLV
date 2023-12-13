@@ -20,6 +20,7 @@ class LoginController extends Controller
             'inputSurname' => 'required',
             'inputBirthday' => 'required',
             'inputNif' => ['required', 'min:8 ', 'max:8'],
+            'inputEmail'=>['required','email'],
             'inputCountry' => 'required',
             'inputProvince' => 'nullable',
             'inputCity' => 'nullable',
@@ -76,12 +77,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'inputNif' => ['required', 'Integer', 'min:8 ', 'max:8'],
+            'inputEmail' => ['required', 'email'],
             'inputHash' => 'required'
+        ],[
+            'inputEmail.required' => 'El campo de correo electrónico es obligatorio.',
+            'inputEmail.email' => 'Ingrese una dirección de correo electrónico válida.',
+            'inputHash.required' => 'El campo de contraseña es obligatorio.'
         ]);
 
         $credentials = [
-            'email' => $request->inputNif,
+            'email' => $request->inputEmail,
             'password' => $request->inputHash
         ];
 

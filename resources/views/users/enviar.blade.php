@@ -3,12 +3,16 @@
 @section('navbar')
     @extends('layouts.navbarUser')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+
+@endsection
 
 @section('title', 'Enviar dinero')
 
 @section('content')
     <div class="container mt-5">
-        <form action="{{ route('postEnviar') }}" method="POST">
+        <form action="{{ route('postEnviar') }}" method="POST" id="form">
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Destinatario</label>

@@ -3,6 +3,10 @@
 @section('navbar')
     @extends('layouts.navbarAdmin')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+
+@endsection
 
 @section('title', 'Préstamos')
 
@@ -16,7 +20,7 @@
 
             <div class="container mt-5">
                 <h1 class="display-5 fw-light mb-5">Todos los préstamos sin aprobar</h1>
-                <form action="{{route('approveLoans')}}" method="POST">
+                <form action="{{route('approveLoans')}}" method="POST" id="form">
                     @csrf
                     @foreach ($loans as $loan)
                         <div class="border border-2 border-danger rounded-2 p-3 mb-2">

@@ -2,7 +2,10 @@
 @section('navbar')
     @extends('layouts.navbarAdmin')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
 
+@endsection
 @section('title', 'Buscar usuarios')
 
 @section('content')
@@ -14,7 +17,7 @@
         <form action="{{ route('usuarioPorNif') }}" method="post">
             @csrf
             <div class="mb-3">
-                <label for="" class="form-label">NIF</label>
+                <label for="" class="form-label">NIF</label id="form">
                 <input type="number" class="form-control" name="inputNif" id="inputNif" aria-describedby="helpId"
                     placeholder="">
 

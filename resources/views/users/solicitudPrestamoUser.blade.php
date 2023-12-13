@@ -3,12 +3,15 @@
 @section('navbar')
 @extends('layouts.navbarUser')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
 
+@endsection
 @section('title', 'Solicitud préstamo')
 
 @section('content')
     <div class="container mt-5">
-        <form action="{{ route('postSolicitar') }}" method="POST">
+        <form action="{{ route('postSolicitar') }}" method="POST" id="form">
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Motivo de solicitud del préstamo</label>

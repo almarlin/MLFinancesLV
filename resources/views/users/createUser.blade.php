@@ -1,11 +1,14 @@
 @extends('layouts.template')
 
 @section('title', 'Crear Usuario')
+@section('script')
+    <script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
 
+@endsection
 @section('content')
 
     <div class="container mt-5">
-        <form action={{ route('user.store') }} method="POST">
+        <form action={{ route('user.store') }} method="POST" id="form">
             {{-- Esto es un token de seguridad de laravel --}}
             @csrf
 
@@ -67,14 +70,14 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Dirección</label>
-                <input type="text" class="form-control" name="inputAddress" id="inputAddress" aria-describedby="helpId"
-                    placeholder="">
+                <input type="text" class="form-control" name="inputAddress" id="inputAddress"
+                    aria-describedby="helpId" placeholder="">
                 <small id="helpId" class="form-text text-muted">Introduce tu dirección</small>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Nº de teléfono</label>
-                <input type="number" class="form-control" name="inputPhoneNumber" id="inputPhoneNumber" aria-describedby="helpId"
-                    placeholder="">
+                <input type="number" class="form-control" name="inputPhoneNumber" id="inputPhoneNumber"
+                    aria-describedby="helpId" placeholder="">
                 <small id="helpId" class="form-text text-muted">Introduce tu número de teléfono</small>
             </div>
             <div class="mb-3">
@@ -85,8 +88,8 @@
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Repite la contraseña</label>
-                <input type="password" class="form-control" name="inputRepeatHash" id="inputRepeatHash" aria-describedby="helpId"
-                    placeholder="">
+                <input type="password" class="form-control" name="inputRepeatHash" id="inputRepeatHash"
+                    aria-describedby="helpId" placeholder="">
                 <small id="helpId" class="form-text text-muted"></small>
             </div>
             <button type="submit" class="btn btn-primary">Añadir</button>

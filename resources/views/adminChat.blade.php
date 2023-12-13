@@ -2,6 +2,10 @@
 @section('navbar')
     @extends('layouts.navbarAdmin')
 @endsection
+@section('script')
+<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+
+@endsection
 
 @section('title', 'Panel de respuesta')
 
@@ -24,7 +28,7 @@
             </div>
 
         </div>
-        <form action="{{ route('adminSendMessage') }}" method='POST'>
+        <form action="{{ route('adminSendMessage') }}" method='POST' id="form">
             @csrf
             <div class="mb-3 container">
                 <div class="row">
