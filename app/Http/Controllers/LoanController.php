@@ -19,14 +19,41 @@ class LoanController extends Controller
         ]);
 
         $loanRequest = new Loan();
+        $userAccount = $request->user()->accounts->first();
+        $user = $request->user();
 
-        $loanRequest->account_id = $request->user()->accounts->first()->id;
+        $loanRequest->account_id = $userAccount->id;
         $loanRequest->total = $request->input('inputQuantity');
-        $loanRequest->approved = null;
-        $loanRequest->concept = $request->input('inputConcept');
-        $loanRequest->save();
 
-        return redirect(route('mipanel'));
+        $loanController = new LoanController();
+
+        if ($loanController->validateLoan($loanRequest, $userAccount, $user)) {
+            $loanRequest->approved = null;
+            $loanRequest->concept = $request->input('inputConcept');
+            $loanRequest->save();
+
+            return redirect(route('mipanel'));
+        } else {
+            return back()->with('error', 'No cumple con los requisitos para que se le conceda un préstamo');
+        }
+    }
+
+    public function validateLoan(Loan $loan, Account $userAccount, User $user)
+    {
+
+        $accountBalanceDecimal = hexdec($userAccount->BALANCE);
+
+        if ($accountBalanceDecimal > ($loan->TOTAL*0.15) && $user->AGE >= 18) {
+
+            foreach (Loan::where('account_id', $userAccount->id)->get() as $userLoans) {
+                if ($userLoans->APPROVED == null) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -43,9 +70,9 @@ class LoanController extends Controller
 
                 $account = Account::find($loan->account_id);
                 $accountBalanceDecimal = hexdec($account->BALANCE);
-                $accountBalanceDecimal+=$loan->TOTAL;
-                $account->BALANCE  =dechex($accountBalanceDecimal);
-                
+                $accountBalanceDecimal += $loan->TOTAL;
+                $account->BALANCE  = dechex($accountBalanceDecimal);
+
                 $account->save();
 
 
