@@ -56,7 +56,7 @@ class LoginController extends Controller
         $user->save();
 
         $account = new Account();
-        $account->BALANCE = 300;
+        $account->BALANCE = dechex(300);
 
         $accountController = new AccountController();
         $account->IBAN = $accountController->generateIban($user->name);

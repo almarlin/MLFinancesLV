@@ -21,7 +21,11 @@ class MovementController extends Controller
         $deposit->fromIBAN = $request->user()->accounts->first()->IBAN;
         $deposit->toIBAN = $request->user()->accounts->first()->IBAN;
 
-        $request->user()->accounts->first()->BALANCE += $request->input('inputQuantity');
+        // Hexdec cambia de hexadecimal a decimal. Dechex cambia de decimal a hexadecimal
+        $accountBalanceDecimal = hexdec($request->user()->accounts->first()->BALANCE);
+        $accountBalanceDecimal += $request->input('inputQuantity');
+        $request->user()->accounts->first()->BALANCE = dechex($accountBalanceDecimal);
+
 
         $request->user()->accounts->first()->save();
         $deposit->save();
@@ -41,7 +45,9 @@ class MovementController extends Controller
         $substract->fromIBAN = $request->user()->accounts->first()->IBAN;
         $substract->toIBAN = $request->user()->accounts->first()->IBAN;
 
-        $request->user()->accounts->first()->BALANCE -= $request->input('inputQuantity');
+        $accountBalanceDecimal = hexdec($request->user()->accounts->first()->BALANCE);
+        $accountBalanceDecimal -= $request->input('inputQuantity');
+        $request->user()->accounts->first()->BALANCE = dechex($accountBalanceDecimal);
 
         $request->user()->accounts->first()->save();
         $substract->save();
@@ -56,7 +62,7 @@ class MovementController extends Controller
         $send->concept = $request->input('inputConcept');
         $send->quantity = $request->input('inputQuantity');
         $send->account_id = $request->user()->accounts->first()->id;
-        $toEmail=$request->input('inputEmail');
+        $toEmail = $request->input('inputEmail');
 
         $toaccount_id = DB::select("SELECT accounts.id FROM accounts INNER JOIN users ON users.id = accounts.user_id WHERE users.email ='$toEmail';");
 
@@ -65,31 +71,37 @@ class MovementController extends Controller
 
         $send->fromIBAN = $request->user()->accounts->first()->IBAN;
 
-        $toIBAN = DB::select("SELECT IBAN FROM accounts WHERE id=".$toaccount_id[0]->id.";");
+        $toIBAN = DB::select("SELECT IBAN FROM accounts WHERE id=" . $toaccount_id[0]->id . ";");
         $send->toIBAN = $toIBAN[0]->IBAN;
 
-        $destinatary=Account::find($toaccount_id[0]->id);
-        $request->user()->accounts->first()->BALANCE -= $request->input('inputQuantity');
+        $destinatary = Account::find($toaccount_id[0]->id);
+        $senderBalanceDecimal = hexdec($request->user()->accounts->first()->BALANCE);
+        $senderBalanceDecimal -= $request->input('inputQuantity');
+        $request->user()->accounts->first()->BALANCE = dechex($senderBalanceDecimal);
 
-        $destinatary->BALANCE += $request->input('inputQuantity');
+        $destinataryBalanceDecimal = hexdec($destinatary->BALANCE);
+        $destinataryBalanceDecimal += $request->input('inputQuantity');
+        $destinatary->BALANCE = dechex($destinataryBalanceDecimal);
         $destinatary->save();
 
         $request->user()->accounts->first()->save();
         $send->save();
 
-        return redirect(route('mipanel'));  
+        return redirect(route('mipanel'));
     }
 
-    public function showMovements(){
-        $movements = Movement::where('account_id',auth()->user()->accounts->first()->id)->paginate(5);
-       
+    public function showMovements()
+    {
+        $movements = Movement::where('account_id', auth()->user()->accounts->first()->id)->paginate(5);
+
 
         return view('users.verMovimientos', compact('movements'));
     }
 
-    public function adminMovements(){
+    public function adminMovements()
+    {
         $movements = Movement::paginate(5);
-       
+
 
         return view('adminMovements', compact('movements'));
     }

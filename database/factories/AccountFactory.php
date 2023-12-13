@@ -22,7 +22,7 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            'BALANCE' => 300,
+            'BALANCE' => dechex(300),
             'IBAN' => app(AccountController::class)->generateIban($this->faker->name),
             'user_id'=>function(){
                 return User::factory()->create()->id;

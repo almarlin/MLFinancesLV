@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->integer('id',true);
             $table->string('IBAN',255);
-            $table->float('BALANCE', 10, 0)->nullable();
+            $table->string('BALANCE', 32)->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });
