@@ -110,13 +110,15 @@
             </div>
             <div class="col-12 col-md-5 rounded-2 border border-2 border-danger">
                 <h4 class="fw-light text-center">Cambiar foto de perfil</h4>
-                <form action="" method="post">
+                <form action="{{route('cambiarFotoPerfil')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         
                         <input type="file" name="inputProfilePhoto" id="ainputProfilePhoto" accept="image/*">
 
                     </div>
+                    <h6 class="fw-light">Foto actual</h6>
+                    <img class="img-responsive mb-4" src="{{ asset('../storage/app/public/' . Auth::user()->PROFILEPHOTO) }}" alt="Foto de Perfil">
                     
                     <button type="submit" class="btn btn-danger">
                         Cambiar
@@ -129,6 +131,11 @@
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        
+        
 
     </div>
 

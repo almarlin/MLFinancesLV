@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 // Anyadimos el modelo para poder crear objetos y guardarlos en la bbdd.    
 use App\Models\User;
 use App\Models\Account;
@@ -90,16 +91,32 @@ class UserController extends Controller
     {
 
         $user = $request->user();
-        if(Hash::check($request->input('inputOldPassword'),$user->password) && $request->input('inputNewPassword')==$request->input('inputNewPasswordRepeat')){
+        if (Hash::check($request->input('inputOldPassword'), $user->password) && $request->input('inputNewPassword') == $request->input('inputNewPasswordRepeat')) {
 
-            $newPassword=Hash::make($request->input('inputNewPassword'));
-            $user->password=$newPassword;
+            $newPassword = Hash::make($request->input('inputNewPassword'));
+            $user->password = $newPassword;
             $user->save();
 
             return redirect(route('mipanel'));
-        }else{
+        } else {
             return redirect(route('datosUsuario'))->with(['error' => 'Contraseña no coincidiente.']);
         }
-       
+    }
+
+    public function changeProfilePhoto(Request $request)
+    {
+        // Valida la solicitud (tamaño, formato, etc.)
+        $request->validate([
+            'inputProfilePhoto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Ajusta según tus necesidades
+        ]);
+        $user = $request->user();
+        // Almacena la foto en el sistema de archivos (puedes personalizar esto según tus necesidades)
+        $photoRoute = $request->file('inputProfilePhoto')->store('fotos_perfil', 'public');
+
+        // Actualiza el modelo del usuario con la ruta de la foto
+        $user->PROFILEPHOTO = $photoRoute;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Foto de perfil guardada exitosamente.');
     }
 }

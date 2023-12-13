@@ -18,14 +18,14 @@
                     <a class="nav-link text-light fs-6 fw-light" href="{{ route('verPrestamos') }}">Préstamos</a>
                 </li>
                 <li class="dropdown">
-                    <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        IMG Perfil
-                    </button>
+                    <img class="img-responsive mb-4 btn btn-danger dropdown-toggle col-2 rounded-circle border border-2 border-light"
+                        src="{{ asset('../storage/app/public/' . Auth::user()->PROFILEPHOTO) }}" alt="Foto de Perfil"
+                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                     <ul class="dropdown-menu bg-danger">
-                        <li><a class="dropdown-item  text-light" href="{{route('datosUsuario')}}">Mis datos</a></li>
-                        <li><a class="dropdown-item  text-light" href="{{route('logout')}}">Cerrar sesión</a></li>
-                        
+                        <li><a class="dropdown-item  text-light" href="{{ route('datosUsuario') }}">Mis datos</a></li>
+                        <li><a class="dropdown-item  text-light" href="{{ route('logout') }}">Cerrar sesión</a></li>
+
                     </ul>
                 </li>
 

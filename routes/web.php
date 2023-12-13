@@ -74,6 +74,8 @@ Route::get('/panel/verMisMovimientos', [MovementController::class,'showMovements
 Route::view('/panel/misDatos', 'users.editarDatos')->middleware(['auth','onlyUser'])->name('datosUsuario');
 Route::post('/panel/misDatos/actualizardatos', [UserController::class,'changeData'])->middleware(['auth','onlyUser'])->name('actualizarDatos');
 Route::post('/panel/misDatos/actualizarpassword', [UserController::class,'changePassword'])->middleware(['auth','onlyUser'])->name('actualizarPassword');
+Route::post('/panel/misDatos/cambiarFotoPerfil', [UserController::class,'changeProfilePhoto'])->middleware(['auth','onlyUser'])->name('cambiarFotoPerfil');
+
 
 
 
