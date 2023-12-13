@@ -24,6 +24,21 @@ class UserController extends Controller
         return view('users.loginUser');
     }
 
+    public function lastUsers(){
+        $allUsers=User::all();
+        $lastsUsers = [];
+        $count=0;
+        for ($i = count($allUsers) - 1; $i >= 0; $i--) {
+            array_push( $lastsUsers,$allUsers[$i]);
+            $count++;
+            if ($count == 2) {
+                break;
+            }
+        }
+
+        return $lastsUsers;
+    }
+
     public function adminUsers()
     {
         $users = User::paginate(5);

@@ -90,6 +90,44 @@ class MovementController extends Controller
         return redirect(route('mipanel'));
     }
 
+    public function userMovements(Request $request)
+    {
+        // Para identificar todos los movimientos del usuario, recibidos y realizados.
+        // Cogemos su id (desde la autenticacion) y lo buscamos en la bbdd tanto como destinatario como ejecutor.
+        // Finalmente mostramos los movimientos de mas reciente a mas antiguo.
+        $user = $request->user();
+        $account = Account::where('user_id', $user->id)->first();
+        $allMovements = Movement::where('account_id', $account->id)
+            ->orWhere('toaccount_id', $account->id)
+            ->get();
+        $lastMovements = [];
+        $count=0;
+        for ($i = count($allMovements) - 1; $i >= 0; $i--) {
+            array_push( $lastMovements,$allMovements[$i]);
+            $count++;
+            if ($count == 2) {
+                break;
+            }
+        }
+
+        return view('mainUser', compact('lastMovements'));
+    }
+
+    public function showLastMovements(){
+        $allMovements=Movement::all();
+        $lastMovements = [];
+        $count=0;
+        for ($i = count($allMovements) - 1; $i >= 0; $i--) {
+            array_push( $lastMovements,$allMovements[$i]);
+            $count++;
+            if ($count == 2) {
+                break;
+            }
+        }
+
+        return $lastMovements;
+    }
+
     public function showMovements()
     {
         $movements = Movement::where('account_id', auth()->user()->accounts->first()->id)->paginate(5);

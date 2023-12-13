@@ -72,8 +72,9 @@
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
             <div class="col-4">
-                <p class="text-center">Nº de cuenta</p>
-                <p class="text-center">@auth {{ auth()->user()->accounts->first()->IBAN }} @endauth
+                <p class="text-center fw-light fs-5">Nº de cuenta</p>
+                <p class="text-center"><strong>@auth {{ auth()->user()->accounts->first()->IBAN }} @endauth
+                    </strong>
                 </p>
 
             </div>
@@ -81,7 +82,9 @@
         </div>
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-4"></div>
-            <div class="col-4 text-center">Img cartera</div>
+            <div class="col-4 text-center"><img src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}"
+                    class="img-fluid w-25 mb-4" alt="Imagen cartera" />
+            </div>
             <div class="col-4 d-flex btn-group-md">
                 <button onclick="changeCurrency('euro')" class="btn rounded-0 btn-primary" id='euro'>€</button>
                 <button onclick="changeCurrency('dollar')" class="btn rounded-0 btn-primary" id='dollar'>$</button>
@@ -92,7 +95,7 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center display-6" id="balance">
+                <p class="text-center display-6 balance">
                     @auth
                         {{ auth()->user()->accounts->first()->BALANCE }}
                     @endauth
@@ -118,39 +121,14 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
 
-                @php
-                    use App\Models\Movement;
-                    // Para identificar todos los movimientos del usuario, recibidos y realizados.
-                    // Cogemos su id (desde la autenticacion) y lo buscamos en la bbdd tanto como destinatario como ejecutor.
-                    // Finalmente mostramos los movimientos de mas reciente a mas antiguo.
-                    $idUserAccount = auth()
-                        ->user()
-                        ->accounts->first()->id;
-                    $movements = Movement::where('account_id', $idUserAccount)
-                        ->orWhere('toaccount_id', $idUserAccount)
-                        ->get();
-                    $count = 0;
-                @endphp
-
-                @for ($i = count($movements) - 1; $i >= 0; $i--)
-                    @php
-                        $movement = $movements[$i];
-                    @endphp
-
+                @foreach ($lastMovements as $movement)
                     <div class="container rounded border border-2 border-danger movimiento mb-2">
                         <p class="text-center">De {{ $movement->fromIBAN }}</p>
                         <p class="text-center">A {{ $movement->toIBAN }}</p>
                         <p class="text-center">Concepto {{ $movement->CONCEPT }}</p>
                         <p class="text-center">Cantidad {{ $movement->QUANTITY }}</p>
                     </div>
-
-                    @php
-                        $count++;
-                        if ($count == 2) {
-                            break;
-                        }
-                    @endphp
-                @endfor
+                @endforeach
 
 
 

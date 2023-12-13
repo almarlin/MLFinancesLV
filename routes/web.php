@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovementController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\UserController;
+use App\Models\Movement;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Para bloquear una entrada no autorizada a una ruta se utiliza el middleware auth
 - Para evitar conflictos se regenera la sesion después de autenticar.
 */
 
-Route::view('/panel', 'mainUser')->middleware(['auth','onlyUser'])->name('mipanel');
+Route::get('/panel', [MovementController::class,'userMovements'])->middleware(['auth','onlyUser'])->name('mipanel');
 
 
 Route::post('/panel/envioMensaje',[MessageController::class,'sendMessage'])->middleware(['auth','onlyUser'])->name('sendMessage');
@@ -80,7 +81,7 @@ Route::post('/panel/misDatos/cambiarFotoPerfil', [UserController::class,'changeP
 
 
 
-Route::get('/adminPanel',[AdminController::class,'mainAdmin'])->middleware(['auth','admin'])->name('panelAdmin');
+Route::get('/adminPanel',[AdminController::class, 'mainAdmin'])->middleware(['auth','admin'])->name('panelAdmin');
 Route::get('/adminPanel/movimientos',[MovementController::class,'adminMovements'])->middleware(['auth','admin'])->name('movimientosBanco');
 Route::get('/adminPanel/cuentas',[AccountController::class,'adminAccounts'])->middleware(['auth','admin'])->name('cuentasBanco');
 Route::get('/adminPanel/usuarios',[UserController::class,'adminUsers'])->middleware(['auth','admin'])->name('usuariosBanco');
