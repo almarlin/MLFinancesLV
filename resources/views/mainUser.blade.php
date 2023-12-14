@@ -95,7 +95,7 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12">
-                <p class="text-center display-6 balance">
+                <p class="text-center display-6 balance" id="balance">
                     @auth
                         {{ auth()->user()->accounts->first()->BALANCE }}
                     @endauth
