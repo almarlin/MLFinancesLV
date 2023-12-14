@@ -1,0 +1,12 @@
+@mixin footer-text{
+    color: $mlFinances-gray;
+    font-size: smaller;
+    font-weight: 100;
+}
+
+.footer{
+    @include footer-text;
+    background-color: $mlFinances-dark;
+    padding: 4em;
+}
+
