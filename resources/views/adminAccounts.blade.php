@@ -17,19 +17,32 @@
     @endphp
 
 
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center me-0">
         <div class="col-12 col-md-6">
 
             <div class="container mt-5">
                 <h1 class="display-5 fw-light mb-5">Todas las cuentas</h1>
-                @foreach ($accounts as $account)
-                    <div class="border border-2 border-danger rounded-2 p-3 mb-2">
-                        <p class="text-center">IBAN: {{ $account->IBAN }}</p>
-                        <p class="text-center">Balance: <span class="balance"> {{ $account->BALANCE }}</span></p>
-                        <p class="text-center">Fecha de creación: {{ $account->created_at }}</p>
-                        <p class="text-center">Titular: {{ User::where('id', $account->user_id)->first()->NIF }}</p>
-                    </div>
-                @endforeach
+                <div class="row justify-content-center align-items-center g-2 me-0">
+
+
+                    @foreach ($accounts as $bankAccount)
+                        <div
+                            class="container rounded border border-2 border-danger movimiento mb-2 row justify-content-center align-content-center p-3">
+                            <div class="text-center col-12 col-md-3">
+                                <p class="fw-ligth fs-5 text-muted">IBAN</p>
+                                <p class=" font-size-2">{{ $bankAccount->IBAN }}</p>
+                            </div>
+                            <div class="text-center col-12 col-md-3">
+                                <p class="fw-ligth fs-5 text-muted"> Balance</p>
+                                <p class="balance font-size-2"> {{ $bankAccount->BALANCE }}</p>
+                            </div>
+                            <div class="text-center col-12 col-md-3">
+                                <p class="fw-ligth fs-5 text-muted">Fecha de creación</p>
+                                <p class=" font-size-2">{{ $bankAccount->created_at }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="d-flex justify-content-center">{{ $accounts->links() }}</div>
 

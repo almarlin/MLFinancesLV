@@ -26,11 +26,15 @@
                             </div>
                         </div>
                         <div class="row justify-content-center align-items-center g-2">
-                            <div class="col-12">
-                                <p class="text-muted">Origen</p>
-                                <p class="">{{ $movement->fromIBAN }}</p>
-                                <p class="text-muted">Destino</p>
-                                <p class="">{{ $movement->toIBAN }}</p>
+                            <div class="col-12 row">
+                                <div class="col-6">
+                                    <p class="text-muted">Origen</p>
+                                    <p class="">{{ $bankMovement->fromIBAN }}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="text-muted">Destino</p>
+                                    <p class="">{{ $bankMovement->toIBAN }}</p>
+                                </div>
                             </div>
 
                         </div>

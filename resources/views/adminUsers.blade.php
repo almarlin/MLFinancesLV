@@ -16,18 +16,30 @@
 
             <div class="container mt-5">
                 <h1 class="display-5 fw-light mb-5">Todos los usuarios</h1>
-                @foreach ($users as $user)
-                @if($user->NAME!='admin')
-                <div class="border border-2 border-danger rounded-2 p-3 mb-2">
-                    <p class="text-center">NIF: {{ $user->NIF }}</p>
-                    <p class="text-center">Nombre: {{ $user->NAME }}</p>
-                    <p class="text-center">Apellidos: {{ $user->SURNAME }}</p>
-                    <p class="text-center">Fecha de creación: {{ $user->created_at }}</p>
-                    <p class="text-center">Número de teléfono: {{ $user->PHONENUMBER }}</p>
+                @foreach ($users as $bankUser)
+                @if ($bankUser->NAME != 'admin')
+
+                    <div
+                    class="container rounded border border-2 border-danger movimiento mb-2 row justify-content-center align-content-center p-3">
+                    <div class="text-center col-12 col-md-3">
+                        <p class="fw-ligth fs-5 text-muted">NIF</p>
+                        <p class=" font-size-1">{{ $bankUser->NIF }}</p>
+                    </div>
+                    <div class="text-center col-12 col-md-2">
+                        <p class="fw-ligth fs-5 text-muted"> Nombre</p>
+                        <p class=" font-size-1"> {{ $bankUser->NAME }}</p>
+                    </div>
+                    <div class="text-center col-12 col-md-3">
+                        <p class="fw-ligth fs-5 text-muted">Fecha de creación</p>
+                        <p class=" font-size-1">{{ $bankUser->created_at }}</p>
+                    </div>
+                    <div class="text-center col-12 col-md-2">
+                        <p class="fw-ligth fs-5 text-muted">Número de teléfono</p>
+                        <p class=" font-size-1">{{ $bankUser->PHONENUMBER }}</p>
+                    </div>
                 </div>
                 @endif
-                    
-                @endforeach
+            @endforeach
             </div>
             <div class="d-flex justify-content-center">{{ $users->links() }}</div>
 
