@@ -56,11 +56,30 @@
         <div class="row justify-content-center align-items-center g-2 me-0">
 
             @foreach ($lastMovements as $bankMovement)
-                <div class="container rounded border border-2 border-danger movimiento mb-2">
-                    <p class="text-center">De {{ $bankMovement->fromIBAN }}</p>
-                    <p class="text-center">A {{ $bankMovement->toIBAN }}</p>
-                    <p class="text-center">Concepto {{ $bankMovement->CONCEPT }}</p>
-                    <p class="text-center">Cantidad {{ $bankMovement->QUANTITY }}</p>
+                <div class="container movement mb-2 row">
+                    <div class="row justify-content-center align-items-center g-2 col-12 col-md-8">
+                        <div class="col-12 col-md-8 row justify-content-center align-items-center g-2">
+                            <div class="col-4">
+                                <p class="">{{ $bankMovement->CONCEPT }}</p>
+                            </div>
+                            <div class="col-8">
+                                <p class="">{{ $bankMovement->created_at }}</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center g-2">
+                            <div class="col-12">
+                                <p class="text-muted">Origen</p>
+                                <p class="">{{ $bankMovement->fromIBAN }}</p>
+                                <p class="text-muted">Destino</p>
+                                <p class="">{{ $bankMovement->toIBAN }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
+                        {{ $bankMovement->QUANTITY }}
+                    </div>
                 </div>
             @endforeach
             <a href="{{ route('movimientosBanco') }}">Ver todos los movimientos</a>
