@@ -81,11 +81,11 @@
             <div class="col-4" id="date1"></div>
         </div>
         <div class="row justify-content-center align-items-center p-2">
-            <div class="col-4"></div>
-            <div class="col-4 text-center"><img src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}"
+            <div class="col-12 col-md-4"></div>
+            <div class="col-12 col-md-4 text-center"><img src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}"
                     class="img-fluid w-25 mb-4" alt="Imagen cartera" />
             </div>
-            <div class="col-4 d-flex btn-group-md">
+            <div class="col-12 col-md-4 d-flex btn-group-md">
                 <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red" id='euro'>€</button>
                 <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red" id='dollar'>$</button>
                 <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red" id='pound'>&</button>
