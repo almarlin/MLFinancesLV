@@ -87,11 +87,11 @@
                     alt="Imagen cartera" />
             </div>
             <div class="col-12 col-md-4 d-flex btn-group-md">
-                <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red" id='euro'>€</button>
-                <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red" id='dollar'>$</button>
-                <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red" id='pound'>&</button>
-                <button onclick="changeCurrency('yen')" class="btn rounded-0 button-red" id='yen'>#</button>
-                <button onclick="changeCurrency('ruble')" class="btn rounded-0 button-red" id='ruble'>@</button>
+                <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red btn-currency" id='euro'>€</button>
+                <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red btn-currency" id='dollar'>$</button>
+                <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red btn-currency" id='pound'>&</button>
+                <button onclick="changeCurrency('yen')" class="btn rounded-0 button-red btn-currency" id='yen'>#</button>
+                <button onclick="changeCurrency('ruble')" class="btn rounded-0 button-red btn-currency" id='ruble'>@</button>
             </div>
         </div>
         <div class="row justify-content-center align-items-center">

@@ -29,7 +29,19 @@
 
 .btn-movement {
   border-radius: 0%;
-  width: 20%;
+  width: 50%;
+}
+
+.btn-currency:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
+}
+
+.btn-currency-pulsed {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
 }
 
 .footer h5 {

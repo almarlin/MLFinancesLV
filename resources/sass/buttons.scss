@@ -4,11 +4,13 @@
     font-weight: lighter;
 }
 
-%button-basic{
+%button-basic {
     padding: 1em;
 }
 
-
+@function calculate-width($base-width, $multiplier) {
+    @return $base-width * $multiplier;
+}
 
 .button-green {
     @include button-text;
@@ -32,7 +34,19 @@
 
 }
 
-.btn-movement{
+.btn-movement {
     border-radius: 0%;
-    width: 20%;
+    width: calculate-width(5%, 10);
 }
+
+.btn-currency:hover {
+   background-color: $mlFinances-gray !important;
+   color: $mlFinances-dark !important;  
+   border: 2px solid $mlFinances-red !important;
+}
+
+.btn-currency-pulsed {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;  
+    border: 2px solid $mlFinances-red !important;
+ }
