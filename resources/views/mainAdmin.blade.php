@@ -90,10 +90,20 @@
 
 
             @foreach ($lastAccounts as $bankAccount)
-                <div class="container rounded border border-2 border-danger movimiento mb-2">
-                    <p class="text-center">IBAN {{ $bankAccount->IBAN }}</p>
-                    <p class="text-center ">Balance: <span class="balance"> {{ $bankAccount->BALANCE }}</span> </p>
-                    <p class="text-center">Fecha de creación {{ $bankAccount->created_at }}</p>
+                <div
+                    class="container rounded border border-2 border-danger movimiento mb-2 row justify-content-center align-content-center">
+                    <div class="text-center col-12 col-md-3">
+                        <p class="fw-ligth">IBAN</p>
+                        <p class=" font-size-2">{{ $bankAccount->IBAN }}</p>
+                    </div>
+                    <div class="text-center col-12 col-md-3">
+                        <p class="fw-ligth"> Balance</p>
+                        <p class="balance font-size-2"> {{ $bankAccount->BALANCE }}</p>
+                    </div>
+                    <div class="text-center col-12 col-md-3">
+                        <p class="fw-ligth">Fecha de creación</p>
+                        <p class=" font-size-2">{{ $bankAccount->created_at }}</p>
+                    </div>
                 </div>
             @endforeach
             <a href="{{ route('cuentasBanco') }}">Ver todas las cuentas</a>
