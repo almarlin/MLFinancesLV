@@ -155,13 +155,15 @@
 
             </div>
             <div class="col-12 col-md-6">
-
-
-                <a href="{{ route('ingresar') }}"><button class="btn button-green">Ingresar</button></a>
-                <a href="{{ route('retirar') }}"><button class="btn button-red">Retirar</button></a>
-                <a href="{{ route('enviar') }}"><button class="btn button-blue">Enviar</button></a>
-
-
+                <div class="col-12 text-center">
+                    <a href="{{ route('ingresar') }}" class="btn button-green btn-movement mb-2">Ingresar</a>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="{{ route('retirar') }}" class="btn button-red btn-movement mb-2">Retirar</a>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="{{ route('enviar') }}" class="btn button-blue btn-movement">Enviar</a>
+                </div>
             </div>
 
         </div>

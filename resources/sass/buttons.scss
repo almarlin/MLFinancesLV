@@ -4,20 +4,35 @@
     font-weight: lighter;
 }
 
+%button-basic{
+    padding: 1em;
+}
+
+
 
 .button-green {
     @include button-text;
+    @extend %button-basic;
     background-color: $mlFinances-green;
 }
 
 .button-red {
+    @extend %button-basic;
+
     @include button-text;
     background-color: $mlFinances-red;
 
 }
 
 .button-blue {
+    @extend %button-basic;
+
     @include button-text;
     background-color: $mlFinances-blue;
 
+}
+
+.btn-movement{
+    border-radius: 0%;
+    width: 20%;
 }

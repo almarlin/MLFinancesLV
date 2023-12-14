@@ -2,6 +2,10 @@
   background-color: #d10000;
 }
 
+.button-blue, .button-red, .button-green {
+  padding: 1em;
+}
+
 .button-green {
   color: #f1f1f1;
   font-size: 1.3em;
@@ -21,6 +25,11 @@
   font-size: 1.3em;
   font-weight: lighter;
   background-color: #0044d8;
+}
+
+.btn-movement {
+  border-radius: 0%;
+  width: 20%;
 }
 
 .footer h5 {
