@@ -13,6 +13,12 @@
   background-color: #4ead00;
 }
 
+.button-green:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #4ead00 !important;
+}
+
 .button-red {
   color: #f1f1f1;
   font-size: 1.3em;
@@ -20,11 +26,23 @@
   background-color: #d10000;
 }
 
+.button-red:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
+}
+
 .button-blue {
   color: #f1f1f1;
   font-size: 1.3em;
   font-weight: lighter;
   background-color: #0044d8;
+}
+
+.button-blue:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #0044d8 !important;
 }
 
 .btn-movement {
