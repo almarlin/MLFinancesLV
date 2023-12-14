@@ -41,3 +41,18 @@
   text-align: center;
   font-weight: 100;
 }
+.movement {
+  border: 2px solid;
+  border-color: #d10000;
+  border-radius: 0.4em;
+}
+
+.movement p {
+  font-weight: 400;
+  font-size: large;
+}
+
+.movement-quantity {
+  font-size: larger;
+  font-weight: 600;
+}

@@ -122,11 +122,28 @@
             <div class="col-12 col-md-6">
 
                 @foreach ($lastMovements as $movement)
-                    <div class="container rounded border border-2 border-danger movimiento mb-2">
-                        <p class="text-center">De {{ $movement->fromIBAN }}</p>
-                        <p class="text-center">A {{ $movement->toIBAN }}</p>
-                        <p class="text-center">Concepto {{ $movement->CONCEPT }}</p>
-                        <p class="text-center">Cantidad {{ $movement->QUANTITY }}</p>
+                    <div class="container movement mb-2 row">
+                        <div class="row justify-content-center align-items-center g-2 col-12 col-md-8">
+                            <div class="col-12 col-md-8 row justify-content-center align-items-center g-2">
+                                <div class="col-4">
+                                    <p class="">{{ $movement->CONCEPT }}</p>
+                                </div>
+                                <div class="col-8">
+                                    <p class="">{{ $movement->created_at }}</p>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center g-2">
+                                <div class="col-12">
+                                    <p class="text-muted">Origen</p>
+                                    <p class="">{{ $movement->fromIBAN }}</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
+                            {{$movement->QUANTITY}}
+                        </div>
                     </div>
                 @endforeach
 

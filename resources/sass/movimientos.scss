@@ -1,0 +1,33 @@
+@use "sass:math";
+
+
+%border {
+    border: 2px solid;
+    border-color: $mlFinances-red;
+    border-radius: math.div(4em,10em)*1em;
+}
+
+@mixin movement-text {
+    font-weight: 400;
+    font-size: large;
+}
+
+
+
+
+.movement {
+    @extend %border;
+    p{
+        @include movement-text;
+
+        
+    }
+    
+
+}
+
+
+.movement-quantity{
+    font-size: larger;
+    font-weight: 600;
+}
