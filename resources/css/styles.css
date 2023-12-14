@@ -23,10 +23,21 @@
   background-color: #0044d8;
 }
 
-.footer {
+.footer h5 {
   color: #f1f1f1;
-  font-size: smaller;
-  font-weight: 100;
+  text-align: center;
+  font-size: larger;
+  font-weight: 200;
+}
+
+.footer {
   background-color: #131313;
   padding: 4em;
+  margin-top: 16em;
+}
+.footer p, .footer li {
+  color: #f1f1f1;
+  font-size: smaller;
+  text-align: center;
+  font-weight: 100;
 }
