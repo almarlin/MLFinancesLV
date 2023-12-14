@@ -82,8 +82,9 @@
         </div>
         <div class="row justify-content-center align-items-center p-2">
             <div class="col-12 col-md-4"></div>
-            <div class="col-12 col-md-4 text-center"><img src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}"
-                    class="img-fluid w-25 mb-4" alt="Imagen cartera" />
+            <div class="col-12 col-md-4 text-center"><img
+                    src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}" class="img-fluid w-25 mb-4"
+                    alt="Imagen cartera" />
             </div>
             <div class="col-12 col-md-4 d-flex btn-group-md">
                 <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red" id='euro'>€</button>
@@ -142,7 +143,7 @@
                         </div>
 
                         <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
-                            {{$movement->QUANTITY}}
+                            {{ $movement->QUANTITY }}
                         </div>
                     </div>
                 @endforeach
@@ -177,8 +178,11 @@
                 <p class="text-center fw-light fs-5">Consulta tu capacidad para pedir un préstamo y solicítalo aquí</p>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center g-2">
-            <a href="{{ route('solicitar') }}"><button class="col-1 btn button-red">Solicitar</button></a>
+        <div class="row justify-content-center align-items-center">
+
+            <button href="{{ route('solicitar') }}" class="col-1 btn button-red">Solicitar</button>
+
         </div>
+
     </div>
 @endsection
