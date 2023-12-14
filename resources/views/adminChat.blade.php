@@ -15,12 +15,12 @@
         <div class="offcanvas-body small">
             <h3 class="fw-light fs-4">Chat</h3>
 
-            <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
+            <h3 class="fw-light fs-4 text-light bg-navbar p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
             </h3>
             <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                 @foreach ($messages as $message)
-                <div class="d-flex mb-2 @if ($message->receiver_id == 1) justify-content-end @endif">
-                    <p class="d-flex p-1 rounded border border-1 border-danger @if ($message->receiver_id == 1) text-light bg-danger @else text-end @endif">
+                <div class="d-flex mb-2 @if ($message->receiver_id == 1) justify-content-start @endif">
+                    <p class="d-flex p-1 rounded border border-1 border-danger @if ($message->receiver_id == 1) text-light bg-navbar @else text-end @endif">
                         {{ $message->content }}
                     </p>
                 </div>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-2">
                         <input type="hidden" name="user_id" id="user_id" value="{{ $messages[0]->user_id }}">
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn button-blue">Enviar</button>
                     </div>
                 </div>
             </div>

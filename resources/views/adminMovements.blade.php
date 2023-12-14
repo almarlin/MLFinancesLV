@@ -29,11 +29,11 @@
                             <div class="col-12 row">
                                 <div class="col-6">
                                     <p class="text-muted">Origen</p>
-                                    <p class="">{{ $bankMovement->fromIBAN }}</p>
+                                    <p class="">{{ $movement->fromIBAN }}</p>
                                 </div>
                                 <div class="col-6">
                                     <p class="text-muted">Destino</p>
-                                    <p class="">{{ $bankMovement->toIBAN }}</p>
+                                    <p class="">{{ $movement->toIBAN }}</p>
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity p-3">
-                        {{ $bankMovement->QUANTITY }}€
+                        {{ $movement->QUANTITY }}€
                     </div>
                 </div>
                 @endforeach
