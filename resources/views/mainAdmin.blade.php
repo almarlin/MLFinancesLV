@@ -12,7 +12,7 @@
 @section('content')
 
     <aside class="mt-1">
-        <button class="btn btn-danger text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
+        <button class="btn button-red text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ayuda ></button>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -23,7 +23,7 @@
             <div class="offcanvas-body small">
                 <h3 class="fw-light fs-4">Chat</h3>
 
-                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
+                <h3 class="fw-light fs-4 text-light bg-navbar p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
                 </h3>
                 <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @if ($userNames)
@@ -36,7 +36,7 @@
                                     <label class="form-check-label" for="{{ $name }}"> {{ $name }} </label>
                                 </div>
                             @endforeach
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn button-red">
                                 Responder
                             </button>
                         </form>
