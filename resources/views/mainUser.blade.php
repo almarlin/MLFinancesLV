@@ -26,7 +26,7 @@
             <div class="offcanvas-body small">
                 <h3 class="fw-light fs-4">Chat</h3>
 
-                <h3 class="fw-light fs-4 text-light bg-danger p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
+                <h3 class="fw-light fs-4 text-light bg-navbar p-2 mt-4 rounded-2" id="emailSelected">Atención al cliente
                 </h3>
                 <div class="h-50 bg-light mb-2 mt-2 rounded-2 container overflow-auto">
                     @php
@@ -58,7 +58,7 @@
                                     placeholder="Mensaje">
                             </div>
                             <div class="col-3">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="submit" class="btn button-blue">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -81,17 +81,28 @@
             <div class="col-4" id="date1"></div>
         </div>
         <div class="row justify-content-center align-items-center p-2">
-            <div class="col-12 col-md-4"></div>
-            <div class="col-12 col-md-4 text-center"><img
-                    src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}" class="img-fluid w-25 mb-4"
-                    alt="Imagen cartera" />
+            <div class="col-12 col-md-12 col-lg-3"></div>
+            <div class="col-12 col-md-12 col-lg-4 text-center"><img
+                    src="{{ asset('../storage/app/public/icons/wallet-svgrepo-com.svg') }}" class="img-fluid mb-4"
+                    alt="Imagen cartera"/>
             </div>
-            <div class="col-12 col-md-4 d-flex btn-group-md">
-                <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red btn-currency" id='euro'>€</button>
-                <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red btn-currency" id='dollar'>$</button>
-                <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red btn-currency" id='pound'>&</button>
-                <button onclick="changeCurrency('yen')" class="btn rounded-0 button-red btn-currency" id='yen'>#</button>
-                <button onclick="changeCurrency('ruble')" class="btn rounded-0 button-red btn-currency" id='ruble'>@</button>
+            <div class="col-12 col-md-12 col-lg-3 max-width-currency d-flex btn-group-md">
+                <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red btn-currency" id='euro'><img
+                        src="{{ asset('../storage/app/public/icons/euro-sign-svgrepo-com.svg') }}"
+                        class="img-fluid rounded-top " alt="" />
+                </button>
+                <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red btn-currency" id='dollar'><img
+                        src="{{ asset('../storage/app/public/icons/dollar-sign-svgrepo-com.svg') }}"
+                        class="img-fluid rounded-top " alt="" /></button>
+                <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red btn-currency" id='pound'><img
+                        src="{{ asset('../storage/app/public/icons/pound-sign-svgrepo-com.svg') }}"
+                        class="img-fluid rounded-top " alt="" /></button>
+                <button onclick="changeCurrency('yen')" class="btn rounded-0 button-red btn-currency" id='yen'><img
+                        src="{{ asset('../storage/app/public/icons/yen-sign-svgrepo-com.svg') }}"
+                        class="img-fluid rounded-top " alt="" /></button>
+                <button onclick="changeCurrency('ruble')" class="btn rounded-0 button-red btn-currency" id='ruble'><img
+                        src="{{ asset('../storage/app/public/icons/ruble-2-svgrepo-com.svg') }}"
+                        class="img-fluid rounded-top " alt="" /></button>
             </div>
         </div>
         <div class="row justify-content-center align-items-center">
@@ -142,8 +153,8 @@
                             </div>
                         </div>
 
-                        <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
-                            {{ $movement->QUANTITY }}
+                        <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity p-3">
+                            {{ $movement->QUANTITY }}€
                         </div>
                     </div>
                 @endforeach
@@ -176,14 +187,12 @@
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center mt-3">
                 <p class="text-center fw-light fs-5">Consulta tu capacidad para pedir un préstamo y solicítalo aquí</p>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center">
-
-            <button href="{{ route('solicitar') }}" class="col-1 btn button-red">Solicitar</button>
-
+        <div class="text-center ">
+            <a href="{{ route('solicitar') }}" class="w-25 btn button-red btn-movement">Solicitar</a>
         </div>
 
     </div>

@@ -1,6 +1,10 @@
 .bg-navbar {
   background-color: #d10000;
 }
+.bg-navbar ul:hover li:hover a:hover {
+  color: #131313 !important;
+  background-color: #f1f1f1 !important;
+}
 
 .button-blue, .button-red, .button-green {
   padding: 1em;
@@ -158,4 +162,14 @@
 
 .font-size-4 {
   font-size: 1.5em;
+}
+
+.border-red {
+  border: 2px solid;
+  border-color: #d10000;
+  border-radius: 6px;
+}
+
+.max-width-currency {
+  max-width: 26em;
 }

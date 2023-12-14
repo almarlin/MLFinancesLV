@@ -36,9 +36,9 @@
                                         @if ($loan->APPROVED)
                                             Aprobado
                                         @elseif($loan->APPROVED == 'null')
-                                            Denegado
-                                        @else
                                             Pendiente de aprobación
+                                        @else
+                                            Denegado
                                         @endif
                                     </p>
                                 </div>
@@ -46,8 +46,9 @@
                             </div>
                         </div>
 
-                        <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
-                            {{ $loan->TOTAL }}
+                        <div
+                            class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity p-3">
+                            {{ $loan->TOTAL }}€
                         </div>
                     </div>
                 @endforeach

@@ -34,8 +34,8 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity">
-                        {{$movement->QUANTITY}}
+                    <div class="row justify-content-center align-items-center g-2 col-12 col-md-4 movement-quantity p-3">
+                        {{ $movement->QUANTITY }}€
                     </div>
                 </div>
                 @endforeach
