@@ -52,7 +52,7 @@
     <div class="container mt-8">
         <h1 class="text-center display-5">Portal de administración</h1>
 
-        <h2 class="fw-light fs-3 mb-4">Últimos movimientos</h2>
+        <h2 class="fw-light font-size-2 mb-4">Últimos movimientos</h2>
         <div class="row justify-content-center align-items-center g-2 me-0">
 
             @foreach ($lastMovements as $bankMovement)
