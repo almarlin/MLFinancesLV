@@ -1,0 +1,11 @@
+@for $i from 1 to 13 {
+    .mt-#{$i} {
+        margin-top: 1em * $i;
+    }
+}
+
+@for $i from 1 to 5{
+    .font-size-#{$i} {
+        font-size: 1em + 0.5em;
+    }
+}

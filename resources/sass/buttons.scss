@@ -1,0 +1,70 @@
+@mixin button-text {
+    color: $mlFinances-gray;
+    font-size: 1.3em;
+    font-weight: lighter;
+}
+
+%button-basic {
+    padding: 1em;
+}
+
+@function calculate-width($base-width, $multiplier) {
+    @return $base-width * $multiplier;
+}
+
+.button-green {
+    @include button-text;
+    @extend %button-basic;
+    background-color: $mlFinances-green;
+}
+
+.button-green:hover {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;
+    border: 2px solid $mlFinances-green !important;
+}
+
+.button-red {
+    @extend %button-basic;
+
+    @include button-text;
+    background-color: $mlFinances-red;
+
+}
+
+.button-red:hover {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;
+    border: 2px solid $mlFinances-red !important;
+}
+
+.button-blue {
+    @extend %button-basic;
+
+    @include button-text;
+    background-color: $mlFinances-blue;
+
+}
+
+.button-blue:hover {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;
+    border: 2px solid $mlFinances-blue !important;
+}
+
+.btn-movement {
+    border-radius: 0%;
+    width: calculate-width(5%, 10);
+}
+
+.btn-currency:hover {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;
+    border: 2px solid $mlFinances-red !important;
+}
+
+.btn-currency-pulsed {
+    background-color: $mlFinances-gray !important;
+    color: $mlFinances-dark !important;
+    border: 2px solid $mlFinances-red !important;
+}

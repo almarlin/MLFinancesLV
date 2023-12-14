@@ -1,8 +1,28 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
-
 // Variables
-@import 'variables';
+@import '_variables';
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+
+
+// Navbar
+@import 'navbar';
+@import 'buttons';
+
+// Footer
+@import 'footer';
+
+// Movimientos y prestamos
+@import 'movimientos';
+
+// Estilo de la pantalla principal de admin
+@import 'mainAdmin';
+
+
+.border-red {
+    border: 2px solid;
+    border-color: $mlFinances-red;
+    border-radius: 6px;
+}
+
+.max-width-currency{
+    max-width: 26em;
+}

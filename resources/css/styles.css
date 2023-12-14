@@ -1,0 +1,175 @@
+.bg-navbar {
+  background-color: #d10000;
+}
+.bg-navbar ul:hover li:hover a:hover {
+  color: #131313 !important;
+  background-color: #f1f1f1 !important;
+}
+
+.button-blue, .button-red, .button-green {
+  padding: 1em;
+}
+
+.button-green {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #4ead00;
+}
+
+.button-green:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #4ead00 !important;
+}
+
+.button-red {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #d10000;
+}
+
+.button-red:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
+}
+
+.button-blue {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #0044d8;
+}
+
+.button-blue:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #0044d8 !important;
+}
+
+.btn-movement {
+  border-radius: 0%;
+  width: 50%;
+}
+
+.btn-currency:hover {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
+}
+
+.btn-currency-pulsed {
+  background-color: #f1f1f1 !important;
+  color: #131313 !important;
+  border: 2px solid #d10000 !important;
+}
+
+.footer h5 {
+  color: #f1f1f1;
+  text-align: center;
+  font-size: larger;
+  font-weight: 200;
+}
+
+.footer {
+  background-color: #131313;
+  padding: 4em;
+  margin-top: 16em;
+}
+.footer p, .footer li {
+  color: #f1f1f1;
+  font-size: smaller;
+  text-align: center;
+  font-weight: 100;
+}
+.movement {
+  border: 2px solid;
+  border-color: #d10000;
+  border-radius: 0.4em;
+}
+
+.movement p {
+  font-weight: 400;
+  font-size: large;
+}
+
+.movement-quantity {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.mt-1 {
+  margin-top: 1em;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.mt-3 {
+  margin-top: 3em;
+}
+
+.mt-4 {
+  margin-top: 4em;
+}
+
+.mt-5 {
+  margin-top: 5em;
+}
+
+.mt-6 {
+  margin-top: 6em;
+}
+
+.mt-7 {
+  margin-top: 7em;
+}
+
+.mt-8 {
+  margin-top: 8em;
+}
+
+.mt-9 {
+  margin-top: 9em;
+}
+
+.mt-10 {
+  margin-top: 10em;
+}
+
+.mt-11 {
+  margin-top: 11em;
+}
+
+.mt-12 {
+  margin-top: 12em;
+}
+
+.font-size-1 {
+  font-size: 1.5em;
+}
+
+.font-size-2 {
+  font-size: 1.5em;
+}
+
+.font-size-3 {
+  font-size: 1.5em;
+}
+
+.font-size-4 {
+  font-size: 1.5em;
+}
+
+.border-red {
+  border: 2px solid;
+  border-color: #d10000;
+  border-radius: 6px;
+}
+
+.max-width-currency {
+  max-width: 26em;
+}

@@ -11,6 +11,11 @@
 
 @section('content')
     <div class="container mt-5">
+        
+    </div>
+
+    <div class="border-red container mt-5 w-25">
+        <h3 class="text-center fw-light fs-3 mt-4 mb-4">Ingresar</h3>
         <form action="{{ route('postIngresar') }}" method="POST" id="form">
             @csrf
 
@@ -25,7 +30,7 @@
                 <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" aria-describedby="helpId"
                     placeholder="">
                 <small id="helpId" class="form-text text-muted"></small>
-                <button type="submit" class="btn btn-danger mt-5">Ingresar</button>
+                <div class="text-center"><button type="submit" class="btn button-red mt-5">Ingresar</button></div>
             </div>
 
         </form>

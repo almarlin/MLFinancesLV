@@ -10,7 +10,7 @@
 @section('title', 'Solicitud préstamo')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="border-red container mt-5">
 
         <h1 class="fw-light mb-4">Solicitar préstamo</h1>
         <p class="fs-6 mb-5 text-muted">Para que le sea concedido el préstamo ha de poseer al menos el 15% de la cantidad solicitada, ser mayor de 18 años y no tener otro préstamo pendiente de aprobación.</p>
@@ -27,7 +27,7 @@
                 <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" aria-describedby="helpId"
                     placeholder="">
                 
-                <button type="submit" class="btn btn-danger mt-5">Solicitar</button>
+                <button type="submit" class="btn button-red mt-5">Solicitar</button>
             </div>
 
         </form>
