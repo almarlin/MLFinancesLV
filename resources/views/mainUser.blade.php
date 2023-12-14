@@ -15,7 +15,7 @@
 @section('content')
 
     <aside class="mt-1">
-        <button class="btn btn-danger text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
+        <button class="btn button-red text-light fs-5 fw-light rounded-0" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ayuda ></button>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -86,11 +86,11 @@
                     class="img-fluid w-25 mb-4" alt="Imagen cartera" />
             </div>
             <div class="col-4 d-flex btn-group-md">
-                <button onclick="changeCurrency('euro')" class="btn rounded-0 btn-primary" id='euro'>€</button>
-                <button onclick="changeCurrency('dollar')" class="btn rounded-0 btn-primary" id='dollar'>$</button>
-                <button onclick="changeCurrency('pound')" class="btn rounded-0 btn-primary" id='pound'>&</button>
-                <button onclick="changeCurrency('yen')" class="btn rounded-0 btn-primary" id='yen'>#</button>
-                <button onclick="changeCurrency('ruble')" class="btn rounded-0 btn-primary" id='ruble'>@</button>
+                <button onclick="changeCurrency('euro')" class="btn rounded-0 button-red" id='euro'>€</button>
+                <button onclick="changeCurrency('dollar')" class="btn rounded-0 button-red" id='dollar'>$</button>
+                <button onclick="changeCurrency('pound')" class="btn rounded-0 button-red" id='pound'>&</button>
+                <button onclick="changeCurrency('yen')" class="btn rounded-0 button-red" id='yen'>#</button>
+                <button onclick="changeCurrency('ruble')" class="btn rounded-0 button-red" id='ruble'>@</button>
             </div>
         </div>
         <div class="row justify-content-center align-items-center">
@@ -116,7 +116,7 @@
     <div class="container">
 
         <div class="row justify-content-center align-items-center">
-            <div class="col-12 fw-light fs-3">Últimos movimientos</div>
+            <div class="col-12 fw-light fs-3 mb-4">Últimos movimientos</div>
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
@@ -139,9 +139,9 @@
             <div class="col-12 col-md-6">
 
 
-                <a href="{{ route('ingresar') }}"><button class="btn btn-danger">Ingresar</button></a>
-                <a href="{{ route('retirar') }}"><button class="btn btn-danger">Retirar</button></a>
-                <a href="{{ route('enviar') }}"><button class="btn btn-danger">Enviar</button></a>
+                <a href="{{ route('ingresar') }}"><button class="btn button-green">Ingresar</button></a>
+                <a href="{{ route('retirar') }}"><button class="btn button-red">Retirar</button></a>
+                <a href="{{ route('enviar') }}"><button class="btn button-blue">Enviar</button></a>
 
 
             </div>
@@ -161,7 +161,7 @@
             </div>
         </div>
         <div class="row justify-content-center align-items-center g-2">
-            <a href="{{ route('solicitar') }}"><button class="col-1 btn btn-danger">Solicitar</button></a>
+            <a href="{{ route('solicitar') }}"><button class="col-1 btn button-red">Solicitar</button></a>
         </div>
     </div>
 @endsection

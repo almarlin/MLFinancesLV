@@ -1,0 +1,24 @@
+.bg-navbar {
+  background-color: #d10000;
+}
+
+.button-green {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #4ead00;
+}
+
+.button-red {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #d10000;
+}
+
+.button-blue {
+  color: #f1f1f1;
+  font-size: 1.3em;
+  font-weight: lighter;
+  background-color: #0044d8;
+}

@@ -1,0 +1,23 @@
+@mixin button-text {
+    color: $mlFinances-gray;
+    font-size: 1.3em;
+    font-weight: lighter;
+}
+
+
+.button-green {
+    @include button-text;
+    background-color: $mlFinances-green;
+}
+
+.button-red {
+    @include button-text;
+    background-color: $mlFinances-red;
+
+}
+
+.button-blue {
+    @include button-text;
+    background-color: $mlFinances-blue;
+
+}
