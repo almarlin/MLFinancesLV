@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\UserAccount;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -20,7 +21,7 @@ class LoginController extends Controller
             'inputSurname' => 'required',
             'inputBirthday' => 'required',
             'inputNif' => ['required', 'min:8 ', 'max:8'],
-            'inputEmail'=>['required','email'],
+            'inputEmail' => ['required', 'email'],
             'inputCountry' => 'required',
             'inputProvince' => 'nullable',
             'inputCity' => 'nullable',
@@ -36,8 +37,9 @@ class LoginController extends Controller
         $user->surname = $request->input('inputSurname');
 
         $date = str_replace(' ', '', $request->input('inputBirthday'));
+        $dateOfBirth = Carbon::createFromFormat('Y-m-d', $request->input('inputBirthday'));
 
-        $user->birthday = $date;
+        $user->birthday = $dateOfBirth;
         $user->nif = $request->input('inputNif');
         $user->email = $request->input('inputEmail');
         $user->country = $request->input('inputCountry');
@@ -47,7 +49,7 @@ class LoginController extends Controller
         $user->address = $request->input('inputAddress');
         $user->phoneNumber = $request->input('inputPhoneNumber');
 
-
+        $user->AGE = $dateOfBirth->age;
         $user->password = Hash::make($request->input('inputHash'));
 
         $user->ban = null;
@@ -55,6 +57,7 @@ class LoginController extends Controller
         $user->profilephoto = 'fotos_perfil/blankUser.png';
 
         $user->save();
+
 
         $account = new Account();
         $account->BALANCE = dechex(300);
@@ -79,7 +82,7 @@ class LoginController extends Controller
         $request->validate([
             'inputEmail' => ['required', 'email'],
             'inputHash' => 'required'
-        ],[
+        ], [
             'inputEmail.required' => 'El campo de correo electrónico es obligatorio.',
             'inputEmail.email' => 'Ingrese una dirección de correo electrónico válida.',
             'inputHash.required' => 'El campo de contraseña es obligatorio.'

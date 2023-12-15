@@ -36,7 +36,7 @@ class UserFactory extends Factory
             'password'=>Hash::make('1234'),
             'BAN'=>0,
             'ADMIN'=>0,
-            'PROFILEPHOTO'=>$this->faker->lexify(),
+            'PROFILEPHOTO'=>'fotos_perfil/blankUser.png',
             'remember_token'=>0,
         ];
     }
