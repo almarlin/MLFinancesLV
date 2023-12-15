@@ -3,7 +3,7 @@
     @extends('layouts.navbarAdmin')
 @endsection
 @section('script')
-<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+<script defer src="{{ asset('../resources/js/validateAdminChat.js') }}"></script>
 
 @endsection
 
@@ -33,18 +33,15 @@
             <div class="mb-3 container">
                 <div class="row">
                     <div class="col-10">
-                        <input type="text" class="form-control" name="inputMessage" id="inputMessage"
-                            placeholder="Mensaje">
+                        <input type="text" class="form-control" name="inputMessage" id="inputMessage" placeholder="Mensaje">
+                        <small id="helpMessage" class="form-text text-muted"></small>
                     </div>
                     <div class="col-2">
                         <input type="hidden" name="user_id" id="user_id" value="{{ $messages[0]->user_id }}">
-                        <button type="submit" class="btn button-blue">Enviar</button>
+                        <button type="button" onclick="validateForm()" class="btn button-blue">Enviar</button>
                     </div>
                 </div>
             </div>
-           
-
-
         </form>
     </div>
 @endsection

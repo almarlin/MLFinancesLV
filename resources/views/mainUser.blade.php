@@ -8,6 +8,7 @@
     <script defer src="{{ asset('../resources/js/balanceToDecimal.js') }}"></script>
     <script defer src="{{ asset('../resources/js/currencyChange.js') }}"></script>
     <script defer src="{{ asset('../resources/js/dates.js') }}"></script>
+    <script defer src="{{ asset('../resources/js/validateUserChat.js') }}"></script>
 @endsection
 
 @section('title', 'Mi panel')
@@ -49,20 +50,19 @@
                         </div>
                     @endforeach
                 </div>
-                <form action="{{ route('sendMessage') }}" method='POST'>
+                <form action="{{ route('sendMessage') }}" method='POST' onsubmit="return validateMessageForm()">
                     @csrf
                     <div class="mb-3 container">
                         <div class="row">
                             <div class="col-8">
-                                <input type="text" class="form-control" name="inputMessage" id="inputMessage"
-                                    placeholder="Mensaje">
+                                <input type="text" class="form-control" name="inputMessage" id="inputMessage" placeholder="Mensaje">
+                                <small id="messageError" class="form-text text-muted"></small>
                             </div>
                             <div class="col-3">
                                 <button type="submit" class="btn button-blue">Enviar</button>
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

@@ -4,10 +4,6 @@
     @extends('layouts.navbarUser')
 @endsection
 
-@section('script')
-    <script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
-
-@endsection
 
 @section('title', 'Mis datos')
 

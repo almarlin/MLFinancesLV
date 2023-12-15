@@ -4,7 +4,7 @@
     @extends('layouts.navbarUser')
 @endsection
 @section('script')
-    <script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+    <script defer src="{{ asset('../resources/js/validateLoanRequest.js') }}"></script>
 
 @endsection
 @section('title', 'Solicitud préstamo')
@@ -17,19 +17,18 @@
         <form action="{{ route('postSolicitar') }}" method="POST" id="form">
             @csrf
             <div class="mb-3">
-                <label for="" class="form-label">Motivo de solicitud del préstamo</label>
-                <input type="text" class="form-control" name="inputConcept" id="inputConcept" aria-describedby="helpId"
+                <label for="inputConcept" class="form-label">Motivo de solicitud del préstamo</label>
+                <input type="text" class="form-control" name="inputConcept" id="inputConcept" aria-describedby="helpConcept"
                     placeholder="">
-                <small id="helpId" class="form-text text-muted"></small>
+                <small id="helpConcept" class="form-text text-muted"></small>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" aria-describedby="helpId"
+                <label for="inputQuantity" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" aria-describedby="helpQuantity"
                     placeholder="">
-                
-                <button type="submit" class="btn button-red mt-5">Solicitar</button>
+                <small id="helpQuantity" class="form-text text-muted"></small>
+                <button type="submit" class="btn button-red mt-5" onclick="validateForm()">Solicitar</button>
             </div>
-
         </form>
 
         @if (session('error'))

@@ -1,10 +1,10 @@
 @extends('layouts.template')
 
 @section('navbar')
-@extends('layouts.navbarUser')
+    @extends('layouts.navbarUser')
 @endsection
 @section('script')
-<script defer src="{{ asset('../resources/js/validateForm.js') }}"></script>
+    <script defer src="{{ asset('../resources/js/validarIngresar.js') }}"></script>
 
 @endsection
 @section('title', 'Retirar dinero')
@@ -16,19 +16,21 @@
             @csrf
 
             <div class="mb-3">
-                <label for="" class="form-label">Concepto</label>
-                <input type="text" class="form-control" name="inputConcept" id="inputConcept" aria-describedby="helpId"
-                    placeholder="">
-                <small id="helpId" class="form-text text-muted"></small>
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" aria-describedby="helpId"
-                    placeholder="">
-                <small id="helpId" class="form-text text-muted"></small>
-                <div class="text-center"><button type="submit" class="btn button-red mt-5">Retirar</button></div>
+                <label for="inputConcept" class="form-label">Concepto</label>
+                <input type="text" class="form-control" name="inputConcept" id="inputConcept"
+                    aria-describedby="helpConcept" placeholder="" required>
+                <small id="helpConcept" class="form-text text-muted"></small>
             </div>
 
+            <div class="mb-3">
+                <label for="inputQuantity" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" name="inputQuantity" id="inputQuantity"
+                    aria-describedby="helpQuantity" placeholder="" required>
+                <small id="helpQuantity" class="form-text text-muted"></small>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn button-red mt-5" onclick="validateForm()">Ingresar</button>
+            </div>
         </form>
     </div>
 @endsection
