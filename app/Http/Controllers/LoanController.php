@@ -43,10 +43,11 @@ class LoanController extends Controller
 
         $accountBalanceDecimal = hexdec($userAccount->BALANCE);
 
-        if ($accountBalanceDecimal > ($loan->TOTAL*0.15) && $user->AGE >= 18) {
 
-            foreach (Loan::where('account_id', $userAccount->id)->get() as $userLoans) {
-                if ($userLoans->APPROVED == null) {
+        if ($accountBalanceDecimal > ($loan->total * 0.15) && $user->AGE >= 18) {
+            $allUserLoans = Loan::where('account_id', $userAccount->id)->get();
+            foreach ($allUserLoans as $userLoans) {
+                if ($userLoans->APPROVED === null) {
                     return false;
                 }
             }
