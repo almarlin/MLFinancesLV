@@ -1,0 +1,28 @@
+@mixin footer-text {
+    color: $mlFinances-gray;
+    font-size: smaller;
+    text-align: center;
+    font-weight: 100;
+}
+
+%footer-title{
+    color: $mlFinances-gray;
+    text-align: center;
+    font-size: larger;
+    font-weight: 200;
+}
+
+.footer {
+
+    background-color: $mlFinances-dark;
+    padding: 4em;
+    margin-top: 16em;
+
+    p, li{
+        @include footer-text;
+    }
+
+    h5{
+        @extend %footer-title;
+    }
+}

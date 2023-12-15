@@ -13,14 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('loan', function (Blueprint $table) {
-            $table->integer('ID_LOAN', true);
+        Schema::create('loans', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->integer('account_id');
+            $table->string('concept');
             $table->date('EXPEDITIONDATE')->nullable();
             $table->float('MONTHLYPAYMENT', 10, 0)->nullable();
+            $table->date('NEXTPAYMENT')->nullable();
             $table->integer('TERMS')->nullable();
             $table->float('TOTAL', 10, 0)->nullable();
+            $table->float('TOPAY', 10, 0)->nullable();
             $table->float('INTEREST', 10, 0)->nullable();
             $table->date('DUEDATE')->nullable();
+            $table->boolean('APPROVED')->nullable();
+            $table->timestamps();
         });
     }
 

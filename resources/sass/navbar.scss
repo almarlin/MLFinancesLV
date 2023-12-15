@@ -1,0 +1,13 @@
+
+
+.bg-navbar{
+    background-color: $mlFinances-red;
+    ul:hover{
+        li:hover{
+            a:hover{
+                color:$mlFinances-dark !important;
+                background-color: $mlFinances-gray !important;
+            }
+        }
+    }
+}
