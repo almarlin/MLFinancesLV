@@ -35,14 +35,14 @@ class MessageController extends Controller
         ]);
         $message = new Message();
 
-        $message->user_id = $request->input('user_id');
+        $message->user_id = 1;
         $message->content = $request->input('inputMessage');
-        $message->receiver_id = 1;
+        $message->receiver_id = $request->input('user_id');
 
         $message->save();
 
         $user = User::find($request->input('user_id'));
 
-        return redirect()->route('adminChat', ['userName' => $user->NAME]);
+        return redirect()->route('panelAdmin');
     }
 }

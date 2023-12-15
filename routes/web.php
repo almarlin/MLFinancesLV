@@ -89,7 +89,7 @@ Route::get('/adminPanel/prestamos',[LoanController::class,'adminLoans'])->middle
 Route::view('/adminPanel/buscarUser','adminFindUser')->middleware(['auth','admin'])->name('buscarUser');
 Route::post('/adminPanel/usuarioPorNif',[UserController::class,'userByNif'])->middleware(['auth','admin','checkRequestMethod:POST'])->name('usuarioPorNif');
 Route::post('/adminPanel/usuarioPorNif/usuarioBan',[UserController::class,'banUser'])->middleware(['auth','admin','checkRequestMethod:POST'])->name('usuarioBan');
-Route::any('/adminPanel/chat',[AdminController::class,'getChatMessages'])->middleware(['auth','admin'])->name('adminChat');
-Route::post('/adminPanel/chat/envioAdmin',[MessageController::class,'adminSendMessage'])->middleware(['auth','admin','checkRequestMethod:POST'])->name('adminSendMessage');
+Route::post('/adminPanel/chat',[AdminController::class,'getChatMessages'])->middleware(['auth','admin'])->name('adminChat');
+Route::post('/adminPanel/chatAdmin/envioAdmin',[MessageController::class,'adminSendMessage'])->middleware(['auth','admin','checkRequestMethod:POST'])->name('adminSendMessage');
 Route::post('/adminPanel/aprobarprestamos',[LoanController::class,'approveLoan'])->middleware(['auth','admin','checkRequestMethod:POST'])->name('approveLoans');
 
