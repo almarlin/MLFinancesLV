@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-danger bg-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{route('index')}}">ML Finances</a>
+        <a class="navbar-brand" href="{{route('index')}}"><img src="{{ asset('../storage/app/public/icons/MLFinancesWhiteLogo.svg') }}" class="img-fluid w-25"
+            alt="" /></a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +19,7 @@
                     <a class="nav-link text-light fs-6 fw-light" href="{{ route('verPrestamos') }}">Préstamos</a>
                 </li>
                 <li class="dropdown">
-                    <img class="img-responsive mb-4 btn button-red p-0 mt-3 ms-3 dropdown-toggle col-2 rounded-circle border border-2 border-light"
+                    <img class="img-fluid mb-4 btn button-red p-0 mt-3 ms-3 dropdown-toggle col-2 rounded-circle border border-2 border-light"
                         src="{{ asset('../storage/app/public/' . Auth::user()->PROFILEPHOTO) }}" alt="Foto de Perfil"
                         id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -28,10 +29,13 @@
 
                     </ul>
                 </li>
+               
+                
 
 
 
             </ul>
+            
         </div>
     </div>
 </nav>

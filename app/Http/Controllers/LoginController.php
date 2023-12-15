@@ -52,7 +52,7 @@ class LoginController extends Controller
 
         $user->ban = null;
         $user->admin = false;
-        $user->profilephoto = null;
+        $user->profilephoto = 'fotos_perfil/blankUser.png';
 
         $user->save();
 

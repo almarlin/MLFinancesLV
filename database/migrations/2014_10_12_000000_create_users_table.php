@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('BAN')->nullable();
             $table->boolean('ADMIN')->nullable();
-            $table->string('PROFILEPHOTO', 60)->nullable();
+            $table->string('PROFILEPHOTO', 255)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

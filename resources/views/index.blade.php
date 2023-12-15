@@ -14,7 +14,8 @@
 
 
         <div class="row justify-content-center align-items-center">
-            <div class="col-12 col-md-3">Logo
+            <div class="col-12 col-md-3"><img src="{{ asset('../storage/app/public/icons/MLFinancesLeftlLogo.svg') }}" class="img-fluid p-4"
+                alt="" />
             </div>
             <div class="row justify-content-center align-items-center col-12 col-md-9">
                 <div class="col-12 text-center">
